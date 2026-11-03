@@ -16,14 +16,18 @@
 
     :root {
       --bg: #fffef5;
-      --text: #1a1a1a;
-      --text-muted: #666666;
+      --text: #1d1b18;
+      --text-muted: #5e5a54;
       --accent: #1e5f74;
-      --accent-light: #f5f2ed;
-      --border: #e8e5df;
       --line: #f0ebe5;
-      --text-subtle: #888888;
-      --text-faint: #999999;
+      --text-subtle: #87827a;
+      --text-faint: #9a958c;
+      --rule: #ddd7cc;
+      --rule-strong: #bfb8ab;
+    }
+
+    ::selection {
+      background: #d5e6eb;
     }
 
     html {
@@ -183,66 +187,64 @@
       font-weight: 600;
     }
 
-    /* Shared callout box (results, notes, philosophy) */
-    .project-impact,
-    .philosophy {
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
-    }
-
+    /* Callout (result, tradeoff, metric, takeaway): a ruled aside, no fill */
     .project-impact {
-      padding: 1.25rem;
-      margin: 1.75rem 0;
-      color: var(--text-muted);
-      line-height: 1.7;
+      margin: 2.5rem 0 2.25rem;
+      padding: 0.15rem 0 0.15rem 1.5rem;
+      border-left: 2px solid var(--accent);
+      font-family: 'Crimson Text', serif;
+      font-size: 1.22rem;
+      line-height: 1.55;
+      color: var(--text);
     }
 
     .impact-label {
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       color: var(--accent);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
     }
 
+    /* Tags: a quiet line of text */
     .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 1.75rem 0;
+      margin: 1.5rem 0 0;
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.9;
+      color: #6b8a93;
     }
 
     .tech {
-      font-size: 0.85rem;
-      padding: 0.4rem 0.85rem;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 3px;
-      font-weight: 500;
+      white-space: nowrap;
     }
 
-    /* Bordered frame around diagrams, maps and tables */
+    .tech:not(:last-child)::after {
+      content: '\00B7';
+      margin: 0 0.55rem;
+      font-weight: 700;
+      color: var(--rule-strong);
+    }
+
+    /* Figures sit on the page, unframed */
     .figure {
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      margin: 1.5rem 0;
-      overflow: hidden;
+      margin: 2.25rem 0;
     }
 
     .figure-map {
-      margin: 1rem 0;
-      padding-bottom: 0.75rem;
-      overflow: visible;
+      margin: 2rem 0;
     }
 
     .figure-caption {
       color: var(--text-faint);
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       line-height: 1.5;
-      padding: 0 1rem;
-      margin: 0.5rem 0 0;
+      max-width: 34rem;
+      margin: 0.75rem auto 0;
       text-align: center;
+      text-wrap: pretty;
       font-family: 'Crimson Text', serif;
       font-style: italic;
     }
@@ -263,116 +265,134 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--rule-strong);
+      border-bottom: 1px solid var(--rule-strong);
     }
 
-    .contract-table thead tr {
-      background: var(--accent-light);
+    .contract-table th,
+    .contract-table td {
+      padding: 0.7rem 0.75rem 0.7rem 0;
+      text-align: left;
+      vertical-align: baseline;
     }
 
     .contract-table thead th {
-      padding: 0.8rem;
-      text-align: left;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contract-table td,
-    .contract-table tbody th {
-      padding: 0.8rem;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .contract-table tbody th {
-      width: 9rem;
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--rule);
       font-weight: 600;
       color: var(--text);
+    }
+
+    .contract-table th:first-child {
+      width: 8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-subtle);
     }
 
     .contract-table .contract-key td {
       color: var(--text);
+      font-weight: 500;
     }
 
     .contract-table code {
       font-family: 'Monaco', 'Courier New', monospace;
       font-size: 0.8rem;
-      background: var(--accent-light);
-      padding: 0.1rem 0.3rem;
-      border-radius: 2px;
+      color: var(--accent);
     }
 
-    .contract-table tbody tr {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contract-table tbody tr:last-child {
-      border-bottom: none;
+    .contract-table tbody tr + tr {
+      border-top: 1px solid var(--line);
     }
 
     /* Siamese diagram: wide layout on desktop, stacked layout on phones */
     .diagram-tall { display: none; }
-    .diagram-siamese .thumb { fill: var(--bg); stroke: #ccc; stroke-width: 1; }
-    .diagram-siamese .tile { fill: #C5EFF5; }
-    .diagram-siamese .defect { fill: #E06C6C; }
-    .diagram-siamese .mask { fill: #2b2b2b; }
+    .diagram-siamese .thumb { fill: var(--bg); stroke: #d0c9bd; stroke-width: 1; }
+    .diagram-siamese .tile { fill: #d9e8ec; }
+    .diagram-siamese .defect { fill: #c96a5a; }
+    .diagram-siamese .mask { fill: #2a2723; }
     .diagram-siamese .mask-hit { fill: #fffef5; }
-    .diagram-siamese .encoder { fill: #C5EFF5; stroke: #b5dfe5; stroke-width: 1; rx: 3; }
+    .diagram-siamese .encoder { fill: #d9e8ec; stroke: #bdd5db; stroke-width: 1; rx: 3; }
     .diagram-siamese .fusion { fill: var(--accent); }
-    .diagram-siamese .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #333; text-anchor: middle; font-weight: 500; }
+    .diagram-siamese .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #2f2c28; text-anchor: middle; font-weight: 500; }
     .diagram-siamese .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #fff; text-anchor: middle; font-weight: 500; }
-    .diagram-siamese .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #777; text-anchor: middle; font-style: italic; }
+    .diagram-siamese .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #7d786f; text-anchor: middle; font-style: italic; }
     .diagram-siamese .arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; }
     .diagram-siamese .arrow-dashed { stroke-dasharray: 4,3; }
     .diagram-siamese .arrowhead { fill: var(--accent); }
 
     /* Zenoh diagram */
-    .diagram-zenoh .node { fill: var(--bg); stroke: #ccc; stroke-width: 1; rx: 3; }
+    .diagram-zenoh .node { fill: var(--bg); stroke: #d0c9bd; stroke-width: 1; rx: 3; }
     .diagram-zenoh .stack-back { fill: #f3f0e9; }
     .diagram-zenoh .controller { fill: var(--accent); rx: 4; }
     .diagram-zenoh .bus { fill: #dcebef; }
-    .diagram-zenoh .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #333; text-anchor: middle; font-weight: 500; }
+    .diagram-zenoh .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #2f2c28; text-anchor: middle; font-weight: 500; }
     .diagram-zenoh .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #fff; text-anchor: middle; font-weight: 500; }
     .diagram-zenoh .label-bus { font-family: 'Inter', Arial, sans-serif; font-size: 12px; fill: var(--accent); text-anchor: middle; font-weight: 600; }
-    .diagram-zenoh .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #777; text-anchor: middle; }
+    .diagram-zenoh .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #7d786f; text-anchor: middle; }
     .diagram-zenoh .sublabel-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: rgba(255,255,255,0.8); text-anchor: middle; }
     .diagram-zenoh .edge-label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: var(--accent); text-anchor: middle; }
     .diagram-zenoh .edge-start { text-anchor: start; }
     .diagram-zenoh .edge-end { text-anchor: end; }
-    .diagram-zenoh .note { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #888; text-anchor: middle; font-style: italic; }
+    .diagram-zenoh .note { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #8a857c; text-anchor: middle; font-style: italic; }
     .diagram-zenoh .arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; }
     .diagram-zenoh .arrow-dashed { stroke-dasharray: 4,3; }
     .diagram-zenoh .arrowhead { fill: var(--accent); }
-    .diagram-zenoh .arrow-future { stroke: #aaa; stroke-width: 1.2; fill: none; stroke-dasharray: 2,4; }
-    .diagram-zenoh .arrowhead-future { fill: #aaa; }
+    .diagram-zenoh .arrow-future { stroke: #b2aca1; stroke-width: 1.2; fill: none; stroke-dasharray: 2,4; }
+    .diagram-zenoh .arrowhead-future { fill: #b2aca1; }
     .diagram-zenoh .tick { stroke: #b9d3da; stroke-width: 1; stroke-dasharray: 2,2; }
 
-    /* Philosophy */
+    /* Notes to Self: closing section, ruled and numbered, no box */
     .philosophy {
-      padding: 2.5rem;
-      margin: 5.5rem 0 3rem 0;
+      margin: 0 0 5rem;
+      counter-reset: note;
     }
 
     .philosophy h2 {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--accent);
+      margin-bottom: 2rem;
     }
 
     .philosophy p {
+      position: relative;
+      padding: 1.4rem 0 1.4rem 3rem;
+      border-top: 1px solid var(--line);
       color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
+      line-height: 1.75;
+      counter-increment: note;
     }
 
-    .philosophy p:last-child {
-      margin-bottom: 0;
+    .philosophy p::before {
+      content: counter(note);
+      position: absolute;
+      left: 0.2rem;
+      top: 1.15rem;
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1;
+      color: var(--accent);
     }
 
     .philosophy strong {
+      display: block;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.35;
       color: var(--text);
-      font-weight: 600;
+      margin-bottom: 0.3rem;
+      text-wrap: balance;
     }
 
     /* Footer */
@@ -454,17 +474,23 @@
         padding: 0 1rem;
       }
 
-      .philosophy {
-        padding: 1.5rem;
+      .philosophy p {
+        padding-left: 2.25rem;
+      }
+
+      .project-impact {
+        padding-left: 1.1rem;
+        font-size: 1.12rem;
+      }
+
+      .contract-table th:first-child {
+        width: 5.5rem;
       }
 
       #alignment-map {
         height: 260px;
       }
 
-      .contract-table tbody th {
-        width: 6.5rem;
-      }
 
       .diagram-wide { display: none; }
       .diagram-tall { display: block; }
@@ -740,13 +766,13 @@
               z: DEEDS.map(function (r) { return r[2]; }),
               customdata: DEEDS.map(function (r) { return [r[1], r[3], r[4], r[5]]; }),
               hovertemplate: '<b>%{customdata[0]}</b><br>Deeds toward Ukraine: %{customdata[1]}<br>Talk toward Ukraine: %{customdata[2]}<br>%{customdata[3]} deeds<extra></extra>',
-              colorscale: [[0, '#E06C6C'], [0.5, '#d4cbbb'], [1, '#4F86E0']], zmin: 0, zmax: 1,
+              colorscale: [[0, '#c96a5a'], [0.5, '#d4cbbb'], [1, '#4F86E0']], zmin: 0, zmax: 1,
               marker: {line: line},
               colorbar: {
                 orientation: 'h', x: 0.5, xanchor: 'center', y: -0.02, yanchor: 'top',
                 thickness: 8, len: 0.5, outlinewidth: 0,
                 tickvals: [0, 0.5, 1], ticktext: ['All Russia', 'Even', 'All Ukraine'],
-                tickfont: {size: 10, color: '#666'}
+                tickfont: {size: 10, color: '#5e5a54'}
               }
             },
             {
@@ -759,10 +785,10 @@
           ], {
             geo: {
               projection: {type: 'natural earth'}, showframe: false,
-              showcoastlines: true, coastlinecolor: '#ddd',
-              showland: true, landcolor: '#f5f2ed',
-              showocean: true, oceancolor: '#E8F4F8',
-              countrycolor: '#ddd', countrywidth: 0.5, bgcolor: '#fffef5',
+              showcoastlines: true, coastlinecolor: '#d9d3c7',
+              showland: true, landcolor: '#faf8f0',
+              showocean: true, oceancolor: '#f1efe5',
+              countrycolor: '#ddd7cc', countrywidth: 0.5, bgcolor: '#fffef5',
               lataxis: {range: [-58, 85]}
             },
             font: {family: 'Inter, Arial, sans-serif', size: 10},
