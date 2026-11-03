@@ -74,9 +74,24 @@
     }
 
     .tagline {
-      font-size: 1.05rem;
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
       line-height: 1.8;
       color: var(--text-muted);
+    }
+
+    .tagline-group {
+      white-space: nowrap;
+    }
+
+    .tagline a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .tagline a:hover {
+      text-decoration: underline;
     }
 
     /* Intro */
@@ -408,7 +423,15 @@
       }
 
       .tagline {
-        font-size: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .tagline-group {
+        display: block;
+      }
+
+      .tagline-sep {
+        display: none;
       }
 
       .intro p {
@@ -503,6 +526,7 @@
   <!-- Hero -->
   <header class="hero">
     <h1 class="name">Ishtiaque Ahmed</h1>
+    <p class="tagline"><span class="tagline-group">ML &amp; Systems Engineer • Oulu, Finland</span><span class="tagline-sep"> • </span><span class="tagline-group"><a href="https://github.com/Ishtiaque-Ahmed-Risat">GitHub</a> • <a href="https://linkedin.com/in/ishtiaque-ahmed-5218831a7">LinkedIn</a> • <a href="mailto:risat.ishtiaque@gmail.com">Email</a></span></p>
   </header>
 
   <main class="container">
