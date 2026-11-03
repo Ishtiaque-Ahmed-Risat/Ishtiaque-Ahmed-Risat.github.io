@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
+      .cached-box { fill: #f0e8df; stroke: #ddd; stroke-width: 1.2; rx: 3; }
+      .fusion-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
+      .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
+      .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
+      .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
+      .arrow { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-dashed { stroke: #1e5f74; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; marker-end: url(#arrowhead); }
+      .title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
+      .insight { font-family: 'Crimson Text', serif; font-size: 12px; fill: #666; text-anchor: middle; font-style: italic; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
+    </marker>
+  </defs>
+
+  <text x="500" y="30" class="title">Siamese SegFormer: Template Separation for Defect Generalization</text>
+
+  <!-- INPUT SECTION -->
+  <!-- Template (cached) -->
+  <rect x="50" y="80" width="140" height="100" class="cached-box"/>
+  <text x="120" y="115" class="label">Template</text>
+  <text x="120" y="133" class="sublabel">(pre-encoded)</text>
+  <text x="120" y="148" class="sublabel">(cached at build)</text>
+
+  <!-- Target Image -->
+  <rect x="50" y="220" width="140" height="80" class="box"/>
+  <text x="120" y="255" class="label">Target Image</text>
+  <text x="120" y="270" class="sublabel">(runtime input)</text>
+
+  <!-- ENCODERS SECTION -->
+  <!-- Template Encoder -->
+  <rect x="250" y="80" width="120" height="100" class="box"/>
+  <text x="310" y="120" class="label">SegFormer</text>
+  <text x="310" y="135" class="sublabel">Encoder</text>
+  <text x="310" y="148" class="sublabel">(Template)</text>
+
+  <!-- Target Encoder -->
+  <rect x="250" y="220" width="120" height="80" class="box"/>
+  <text x="310" y="255" class="label">SegFormer</text>
+  <text x="310" y="270" class="sublabel">Encoder</text>
+
+  <!-- ARROWS: Input to Encoders -->
+  <line x1="190" y1="130" x2="250" y2="130" class="arrow-dashed"/>
+  <text x="220" y="120" class="sublabel">cached</text>
+
+  <line x1="190" y1="260" x2="250" y2="260" class="arrow"/>
+  <text x="220" y="250" class="sublabel">process</text>
+
+  <!-- FUSION SECTION -->
+  <rect x="450" y="130" width="180" height="120" class="fusion-box" rx="8"/>
+  <text x="540" y="175" class="label-white">Cross-Attention</text>
+  <text x="540" y="193" class="sublabel" style="fill: rgba(255,255,255,0.8);">Fuse features:</text>
+  <text x="540" y="208" class="sublabel" style="fill: rgba(255,255,255,0.8);">target queries template</text>
+  <text x="540" y="223" class="sublabel" style="fill: rgba(255,255,255,0.8);">learn distinction</text>
+
+  <!-- ARROWS: Encoders to Fusion -->
+  <line x1="370" y1="130" x2="450" y2="165" class="arrow"/>
+  <line x1="370" y1="260" x2="450" y2="185" class="arrow"/>
+
+  <!-- DECODER SECTION -->
+  <rect x="710" y="130" width="120" height="120" class="box"/>
+  <text x="770" y="170" class="label">SegFormer</text>
+  <text x="770" y="185" class="sublabel">Decoder</text>
+  <text x="770" y="198" class="sublabel">(fused features)</text>
+
+  <!-- ARROW: Fusion to Decoder -->
+  <line x1="630" y1="190" x2="710" y2="190" class="arrow"/>
+
+  <!-- OUTPUT SECTION -->
+  <rect x="900" y="130" width="80" height="120" class="box"/>
+  <text x="940" y="165" class="label">Defect</text>
+  <text x="940" y="180" class="label">Map</text>
+  <text x="940" y="198" class="sublabel">(binary)</text>
+
+  <!-- ARROW: Decoder to Output -->
+  <line x1="830" y1="190" x2="900" y2="190" class="arrow"/>
+
+  <!-- KEY INSIGHTS -->
+  <g>
+    <line x1="100" y1="370" x2="160" y2="370" class="arrow"/>
+    <text x="180" y="375" style="font-family: Arial; font-size: 10px; fill: #333;">Template cached; target processed at inference (no overhead)</text>
+
+    <line x1="100" y1="400" x2="160" y2="400" class="arrow"/>
+    <text x="180" y="405" style="font-family: Arial; font-size: 10px; fill: #333;">Cross-attention learns "template ≠ defect" (generalizability)</text>
+
+    <line x1="100" y1="430" x2="160" y2="430" class="arrow-dashed"/>
+    <text x="180" y="435" style="font-family: Arial; font-size: 10px; fill: #333;">New templates; network already knows the distinction</text>
+  </g>
+
+  <text x="500" y="560" class="insight">Architectural separation enables the network to learn the distinction between template structure and defect, not memorize appearance.</text>
+</svg>

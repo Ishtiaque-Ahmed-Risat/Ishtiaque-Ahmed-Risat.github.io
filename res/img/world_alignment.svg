@@ -1,0 +1,114 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .water { fill: #E8F4F8; }
+      .ukraine { fill: #00A896; opacity: 0.85; }
+      .russia { fill: #A84B20; opacity: 0.85; }
+      .neutral { fill: #999999; opacity: 0.7; }
+      .grid { stroke: #ddd; stroke-width: 0.3; }
+      .title { font-family: 'Crimson Text', serif; font-size: 18px; font-weight: 400; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 11px; fill: #666; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="500" class="water"/>
+
+  <!-- Gridlines for geographic reference -->
+  <line x1="0" y1="250" x2="1200" y2="250" class="grid"/>
+  <line x1="300" y1="0" x2="300" y2="500" class="grid"/>
+  <line x1="600" y1="0" x2="600" y2="500" class="grid"/>
+  <line x1="900" y1="0" x2="900" y2="500" class="grid"/>
+
+  <!-- Divider between pre-war and wartime -->
+  <line x1="600" y1="0" x2="600" y2="500" stroke="#ddd" stroke-width="2"/>
+
+  <!-- TITLES -->
+  <text x="300" y="30" text-anchor="middle" class="title">Pre-War (2021)</text>
+  <text x="900" y="30" text-anchor="middle" class="title">Wartime (2022-2024)</text>
+
+  <!-- PRE-WAR MAP (LEFT) -->
+  <!-- North America -->
+  <rect x="20" y="80" width="80" height="100" class="ukraine"/>
+  <text x="60" y="135" text-anchor="middle" font-size="9" fill="white" font-weight="bold">US</text>
+
+  <!-- Central America -->
+  <rect x="100" y="150" width="30" height="40" class="neutral"/>
+
+  <!-- South America -->
+  <rect x="60" y="200" width="70" height="150" class="russia"/>
+  <text x="95" y="280" text-anchor="middle" font-size="9" fill="white" font-weight="bold">SA</text>
+
+  <!-- Europe (Pre-war: mostly Russia-aligned) -->
+  <rect x="220" y="70" width="100" height="80" class="russia"/>
+  <text x="270" y="115" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Europe</text>
+
+  <!-- Russia -->
+  <rect x="320" y="50" width="130" height="120" class="russia"/>
+  <text x="385" y="115" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Russia</text>
+
+  <!-- Middle East -->
+  <rect x="280" y="140" width="60" height="80" class="russia"/>
+
+  <!-- Africa (Neutral) -->
+  <rect x="220" y="160" width="60" height="150" class="neutral"/>
+
+  <!-- India -->
+  <rect x="340" y="150" width="40" height="50" class="russia"/>
+
+  <!-- China -->
+  <rect x="380" y="70" width="80" height="90" class="russia"/>
+  <text x="420" y="120" text-anchor="middle" font-size="9" fill="white" font-weight="bold">China</text>
+
+  <!-- SE Asia -->
+  <rect x="420" y="150" width="50" height="80" class="russia"/>
+
+  <!-- Australia -->
+  <rect x="480" y="300" width="50" height="60" class="russia"/>
+
+  <!-- Japan -->
+  <rect x="500" y="80" width="30" height="50" class="ukraine"/>
+
+  <!-- WARTIME MAP (RIGHT) -->
+  <!-- North America -->
+  <rect x="620" y="80" width="80" height="100" class="ukraine"/>
+  <text x="660" y="135" text-anchor="middle" font-size="9" fill="white" font-weight="bold">US</text>
+
+  <!-- Central America -->
+  <rect x="700" y="150" width="30" height="40" class="ukraine"/>
+
+  <!-- South America -->
+  <rect x="660" y="200" width="70" height="150" class="ukraine"/>
+  <text x="695" y="280" text-anchor="middle" font-size="9" fill="white" font-weight="bold">SA</text>
+
+  <!-- Europe (Post-war: PRO-UKRAINE - KEY SHIFT) -->
+  <rect x="820" y="70" width="100" height="80" class="ukraine"/>
+  <text x="870" y="115" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Europe</text>
+
+  <!-- Russia -->
+  <rect x="920" y="50" width="130" height="120" class="russia"/>
+  <text x="985" y="115" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Russia</text>
+
+  <!-- Middle East -->
+  <rect x="880" y="140" width="60" height="80" class="russia"/>
+
+  <!-- Africa (Pro-Ukraine shift) -->
+  <rect x="820" y="160" width="60" height="150" class="ukraine"/>
+
+  <!-- India (Neutral - shift) -->
+  <rect x="940" y="150" width="40" height="50" class="neutral"/>
+
+  <!-- China -->
+  <rect x="980" y="70" width="80" height="90" class="russia"/>
+  <text x="1020" y="120" text-anchor="middle" font-size="9" fill="white" font-weight="bold">China</text>
+
+  <!-- SE Asia (Pro-Ukraine) -->
+  <rect x="1020" y="150" width="50" height="80" class="ukraine"/>
+
+  <!-- Australia (Pro-Ukraine - KEY SHIFT) -->
+  <rect x="1080" y="300" width="50" height="60" class="ukraine"/>
+
+  <!-- Japan -->
+  <rect x="1100" y="80" width="30" height="50" class="ukraine"/>
+
+</svg>
