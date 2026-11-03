@@ -1,5 +1,0 @@
-GET /api/users/{id}
-timeout: 5s
-headers: {
-  "Accept": "application/json"
-}

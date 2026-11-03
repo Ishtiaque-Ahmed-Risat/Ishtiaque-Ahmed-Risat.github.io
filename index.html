@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ishtiaque Ahmed — Full Stack Engineer</title>
+  <title>Ishtiaque Ahmed | ML &amp; Systems Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
@@ -22,6 +22,8 @@
       --accent-light: #f5f2ed;
       --border: #e8e5df;
       --line: #f0ebe5;
+      --text-subtle: #888888;
+      --text-faint: #999999;
     }
 
     html {
@@ -77,26 +79,28 @@
       color: var(--text-muted);
     }
 
+    /* Intro */
+    .intro {
+      max-width: 550px;
+      margin: 0 auto 5rem;
+      text-align: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro p {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-subtle);
+    }
+
     /* Main Content */
     .container {
       max-width: 750px;
       margin: 0 auto;
       padding: 0 2rem;
-    }
-
-    /* Section Title */
-    .section-title {
-      font-family: 'Crimson Text', serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      margin: 4rem 0 3rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    .section-title:first-of-type {
-      margin-top: 0;
     }
 
     /* Project */
@@ -149,10 +153,15 @@
       font-weight: 600;
     }
 
-    .project-impact {
-      padding: 1.25rem;
+    /* Shared callout box (results, notes, philosophy) */
+    .project-impact,
+    .philosophy {
       background: var(--accent-light);
       border-left: 3px solid var(--accent);
+    }
+
+    .project-impact {
+      padding: 1.25rem;
       margin: 1.75rem 0;
       color: var(--text-muted);
       line-height: 1.7;
@@ -183,83 +192,86 @@
       font-weight: 500;
     }
 
-    /* Expandable Details */
-    .expand-section {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--line);
+    /* Highlighted keyword in body text */
+    .keyword {
+      background: var(--accent-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
     }
 
-    .expand-btn {
-      background: none;
-      border: none;
-      color: var(--accent);
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0;
-      text-decoration: underline;
-      transition: opacity 0.2s;
-    }
-
-    .expand-btn:hover {
-      opacity: 0.7;
-    }
-
-    .details {
-      max-height: 0;
+    /* Bordered frame around diagrams, maps and tables */
+    .figure {
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      margin: 1.5rem 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
     }
 
-    .details.show {
-      max-height: 800px;
+    .figure-map {
+      margin: 1rem 0;
+      padding-bottom: 0.75rem;
+      overflow: visible;
     }
 
-    .details h4 {
-      font-weight: 600;
-      color: var(--text);
-      margin-top: 1.25rem;
-      margin-bottom: 0.75rem;
+    .figure-caption {
+      color: var(--text-faint);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      padding: 0 1rem;
+      margin: 0.5rem 0 0;
+      text-align: center;
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+    }
+
+    .diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    #alignment-map {
+      width: 100%;
+      height: 320px;
+    }
+
+    /* Contract table */
+    .contract-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
     }
 
-    .details ul {
-      list-style: none;
-      padding-left: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+    .contract-table thead tr {
+      background: var(--accent-light);
     }
 
-    .details li {
-      margin-bottom: 0.75rem;
-      position: relative;
+    .contract-table th {
+      padding: 0.8rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
     }
 
-    .details li:last-child {
-      margin-bottom: 0;
+    .contract-table td {
+      padding: 0.8rem;
     }
 
-    .details li:before {
-      content: "•";
-      position: absolute;
-      left: -1rem;
-      color: var(--accent);
-      font-weight: bold;
+    .contract-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contract-table tbody tr:last-child {
+      border-bottom: none;
     }
 
     /* Philosophy */
     .philosophy {
       padding: 2.5rem;
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
       margin: 5.5rem 0 3rem 0;
     }
 
-    .philosophy h3 {
+    .philosophy h2 {
       font-family: 'Crimson Text', serif;
       font-size: 1.4rem;
       font-weight: 400;
@@ -306,10 +318,6 @@
         font-size: 2.5rem;
       }
 
-      .section-title {
-        font-size: 1.7rem;
-      }
-
       .project-headline {
         font-size: 1.5rem;
       }
@@ -335,10 +343,6 @@
 
       .tagline {
         font-size: 1rem;
-      }
-
-      .section-title {
-        font-size: 1.4rem;
       }
 
       .project-headline {
@@ -404,66 +408,61 @@
 </head>
 <body>
   <!-- Hero -->
-  <div class="hero">
+  <header class="hero">
     <h1 class="name">Ishtiaque Ahmed</h1>
-  </div>
+  </header>
 
-  <div class="container">
+  <main class="container">
 
     <!-- Intro -->
-    <div style="max-width: 550px; margin: 0 auto 5rem; text-align: center; padding-bottom: 3rem; border-bottom: 1px solid var(--line);">
-      <p style="font-family: 'Crimson Text', serif; font-size: 1.3rem; font-weight: 400; line-height: 1.7; color: #888888;">
+    <div class="intro">
+      <p>
         Here I write about my projects and the problems I've solved.
       </p>
     </div>
 
-    <!-- Featured Work -->
-    <h2 class="section-title" style="display: none;"></h2>
-
-
-    <!-- Project 4: Siamese SegFormer -->
-    <div class="project">
+    <!-- Siamese SegFormer -->
+    <article class="project">
       <div class="project-category">Computer Vision</div>
-      <h3 class="project-headline">SegFormer with Siamese Cross-Attention: template separation for centimeter-level defect generalization</h3>
+      <h2 class="project-headline">SegFormer with Siamese Cross-Attention: template separation for centimeter-level defect generalization</h2>
 
       <div class="project-body">
         <p><strong>The problem:</strong> Existing SegFormer model worked well on existing templates but triggered false positives on new templates. Mitigation needed finetuning on every new template; not scalable. Root cause: a single encoder cannot distinguish defect pattern on known template from new template structure.</p>
 
         <p><strong>The solution is threefold:</strong></p>
 
-        <p><span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Rearchitect to Siamese</span>: Separate encoders (template and target) using pre-trained weights. <span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Cross-Attention Fusion</span>: Feature-level attention forces the network to learn template-defect distinctions explicitly. <span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Representation Learning</span>: Inductive bias from Siamese structure teaches invariants, not memorization.</p>
+        <p><span class="keyword">Rearchitect to Siamese</span>: Separate encoders (template and target) using pre-trained weights. <span class="keyword">Cross-Attention Fusion</span>: Feature-level attention forces the network to learn template-defect distinctions explicitly. <span class="keyword">Representation Learning</span>: Inductive bias from Siamese structure teaches invariants, not memorization.</p>
 
         <p>Architectural separation is an inductive bias. The network learns structural distinctions (what makes a defect) rather than memorizing appearances. New templates generalize because the learned boundary is invariant.</p>
       </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 3px; margin: 1.5rem 0; padding: 0; overflow: hidden;">
-        <svg viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+      <div class="figure">
+        <svg class="diagram diagram-siamese" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <style>
-              .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
-              .cached-box { fill: #f0e8df; stroke: #ddd; stroke-width: 1.2; rx: 3; }
-              .fusion-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
-              .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
-              .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
-              .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
-              .arrow { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
-              .arrow-dashed { stroke: #1e5f74; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; marker-end: url(#arrowhead); }
-              .title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
-              .insight { font-family: 'Crimson Text', serif; font-size: 12px; fill: #666; text-anchor: middle; font-style: italic; }
+              .diagram-siamese .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
+              .diagram-siamese .box-encoder { fill: #C5EFF5; }
+              .diagram-siamese .fusion-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
+              .diagram-siamese .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
+              .diagram-siamese .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
+              .diagram-siamese .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
+              .diagram-siamese .arrow { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+              .diagram-siamese .arrow-dashed { stroke: #1e5f74; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; marker-end: url(#arrowhead); }
+              .diagram-siamese .diagram-title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
             </style>
             <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
             </marker>
           </defs>
-          <text x="500" y="30" class="title">Siamese SegFormer: Template Separation for Defect Generalization</text>
+          <text x="500" y="30" class="diagram-title">Siamese SegFormer: Template Separation for Defect Generalization</text>
           <rect x="75" y="60" width="90" height="120" class="box"/>
           <text x="120" y="125" class="label">Template</text>
           <rect x="75" y="200" width="90" height="120" class="box"/>
           <text x="120" y="265" class="label">Target Image</text>
-          <rect x="250" y="80" width="120" height="100" class="box" style="fill: #C5EFF5;"/>
+          <rect x="250" y="80" width="120" height="100" class="box box-encoder"/>
           <text x="310" y="115" class="label">SegFormer</text>
           <text x="310" y="130" class="label">Encoder</text>
-          <rect x="250" y="200" width="120" height="100" class="box" style="fill: #C5EFF5;"/>
+          <rect x="250" y="200" width="120" height="100" class="box box-encoder"/>
           <text x="310" y="240" class="label">SegFormer</text>
           <text x="310" y="255" class="label">Encoder</text>
           <line x1="165" y1="120" x2="250" y2="130" class="arrow"/>
@@ -474,7 +473,7 @@
           <text x="395" y="120" class="sublabel">cached</text>
           <line x1="370" y1="250" x2="450" y2="185" class="arrow"/>
           <text x="400" y="270" class="sublabel">processed</text>
-          <rect x="710" y="130" width="120" height="120" class="box" style="fill: #C5EFF5;"/>
+          <rect x="710" y="130" width="120" height="120" class="box box-encoder"/>
           <text x="770" y="170" class="label">SegFormer</text>
           <text x="770" y="185" class="label">Decoder</text>
           <line x1="630" y1="190" x2="710" y2="190" class="arrow"/>
@@ -497,13 +496,13 @@
         <span class="tech">Vision Transformers</span>
         <span class="tech">Deep Learning</span>
       </div>
-    </div>
+    </article>
 
 
-    <!-- Project 2: Zenoh Distributed Systems -->
-    <div class="project">
+    <!-- Zenoh Distributed Systems -->
+    <article class="project">
       <div class="project-category">Systems Architecture</div>
-      <h3 class="project-headline">A case for Zenoh: unified query-response and pub-sub on one transport</h3>
+      <h2 class="project-headline">A case for Zenoh: unified query-response and pub-sub on one transport</h2>
 
       <div class="project-body">
         <p><strong>Problem:</strong> Building distributed systems requires choosing between RabbitMQ (mature pub-sub, awkward query-response), gRPC (clean RPC, pub-sub as an afterthought), or REST+polling (simple but chatty). Each solves one pattern well; none unifies both.</p>
@@ -513,37 +512,40 @@
         <p><strong>Real use case:</strong> I chose Zenoh in a distributed camera system with 100+ heterogeneous camera nodes, stateless gateways, and a master registry. Obtained: instant gateway scaling, transparent router recovery, zero coordination overhead.</p>
       </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 3px; margin: 1.5rem 0; padding: 0; overflow: hidden;">
-        <svg viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+      <div class="figure">
+        <svg class="diagram diagram-zenoh" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <style>
-              .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
-              .bus-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
-              .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; }
-              .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
-              .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
-              .arrow-query { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-query); }
-              .arrow-sub { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-sub); stroke-dasharray: 4,3; }
-              .topic-label { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #1e5f74; }
+              .diagram-zenoh .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
+              .diagram-zenoh .bus-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
+              /* font-weight 500 was previously inherited from the Siamese diagram's .label rule */
+              .diagram-zenoh .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
+              .diagram-zenoh .label-strong { font-weight: 600; }
+              .diagram-zenoh .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
+              .diagram-zenoh .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
+              .diagram-zenoh .sublabel-white { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: rgba(255,255,255,0.8); text-anchor: middle; }
+              .diagram-zenoh .arrow-query { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-zenoh); }
+              .diagram-zenoh .arrow-sub { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-zenoh); stroke-dasharray: 4,3; }
+              .diagram-zenoh .topic-label { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #1e5f74; }
+              .diagram-zenoh .legend-label { font-family: 'Inter', Arial, sans-serif; font-size: 10px; fill: #333; }
+              .diagram-zenoh .diagram-title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
+              .diagram-zenoh .diagram-note { font-family: 'Crimson Text', serif; font-size: 12px; fill: #666; text-anchor: middle; font-style: italic; }
             </style>
-            <marker id="arrowhead-query" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
-            </marker>
-            <marker id="arrowhead-sub" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <marker id="arrowhead-zenoh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
             </marker>
           </defs>
-          <text x="450" y="30" style="font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400;">Zenoh: Unified Query-Response and Pub-Sub</text>
+          <text x="450" y="30" class="diagram-title">Zenoh: Unified Query-Response and Pub-Sub</text>
           <rect x="50" y="150" width="120" height="120" class="box"/>
-          <text x="110" y="200" class="label" style="font-weight: 600;">IoT Node</text>
+          <text x="110" y="200" class="label label-strong">IoT Node</text>
           <text x="110" y="218" class="sublabel">Camera</text>
           <text x="110" y="230" class="sublabel">queryable</text>
           <text x="110" y="242" class="sublabel">publisher</text>
           <rect x="360" y="140" width="180" height="180" class="bus-box" rx="8"/>
           <text x="450" y="215" class="label-white">Zenoh</text>
-          <text x="450" y="232" style="font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: rgba(255,255,255,0.8); text-anchor: middle;">Bus</text>
+          <text x="450" y="232" class="sublabel-white">Bus</text>
           <rect x="730" y="150" width="120" height="120" class="box"/>
-          <text x="790" y="200" class="label" style="font-weight: 600;">Controller</text>
+          <text x="790" y="200" class="label label-strong">Controller</text>
           <text x="790" y="218" class="sublabel">Master</text>
           <text x="790" y="230" class="sublabel">queryable</text>
           <text x="790" y="242" class="sublabel">publisher</text>
@@ -557,11 +559,11 @@
           <text x="605" y="175" class="topic-label">command (query)</text>
           <g>
             <line x1="80" y1="420" x2="120" y2="420" class="arrow-query" />
-            <text x="140" y="425" style="font-family: Arial; font-size: 10px; fill: #333;">Query: Request-response (command, queryable)</text>
+            <text x="140" y="425" class="legend-label">Query: Request-response (command, queryable)</text>
             <line x1="80" y1="450" x2="120" y2="450" class="arrow-sub" />
-            <text x="140" y="455" style="font-family: Arial; font-size: 10px; fill: #333;">Subscribe: Pub-sub (status, events)</text>
+            <text x="140" y="455" class="legend-label">Subscribe: Pub-sub (status, events)</text>
           </g>
-          <text x="450" y="520" style="font-family: 'Crimson Text', serif; font-size: 12px; fill: #666; text-anchor: middle; font-style: italic;">All participants use both query and subscribe on one unified transport.</text>
+          <text x="450" y="520" class="diagram-note">All participants use both query and subscribe on one unified transport.</text>
         </svg>
       </div>
 
@@ -581,13 +583,13 @@
         <span class="tech">Distributed Systems</span>
         <span class="tech">Stateless Services</span>
       </div>
-    </div>
+    </article>
 
 
-    <!-- Project 6: Geopolitical Alignment -->
-    <div class="project">
+    <!-- Geopolitical Alignment -->
+    <article class="project">
       <div class="project-category">Data Analysis</div>
-      <h3 class="project-headline">Measuring geopolitical shift: 19.5 million news articles, PySpark pipeline, alignment classification</h3>
+      <h2 class="project-headline">Measuring geopolitical shift: 19.5 million news articles, PySpark pipeline, alignment classification</h2>
 
       <div class="project-body">
         <p><strong>Pipeline:</strong> Extracted 19.5 million GDELT events from GDELT Global Knowledge Graph via BigQuery, processed with PySpark to compute bilateral Goldstein alignment scores (conflict-cooperation scale -10 to +10). Normalized per-period, applied 33rd percentile threshold for binary classification (Pro-Ukraine / Neutral / Pro-Russia), and visualized geospatial shift across 215+ countries.</p>
@@ -612,9 +614,9 @@
         <span class="tech">Goldstein Scale</span>
       </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 3px; margin: 1rem 0; padding-bottom: 0.75rem;">
-        <div id="alignment-map" style="width: 100%; height: 320px;"></div>
-        <p style="color: #999999; font-size: 0.8rem; line-height: 1.5; padding: 0 1rem; margin: 0.5rem 0 0; text-align: center; font-family: 'Crimson Text', serif; font-style: italic;">Red: pro-Russia. Blue: pro-Ukraine. Grey: insufficient data. Western Europe's reversal signals how a historical event rewired global discourse.</p>
+      <div class="figure figure-map">
+        <div id="alignment-map"></div>
+        <p class="figure-caption">Red: pro-Russia. Blue: pro-Ukraine. Grey: insufficient data. Western Europe's reversal signals how a historical event rewired global discourse.</p>
       </div>
       <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
       <script>
@@ -622,52 +624,55 @@
         var plotlyLayout = {"geo": {"domain": {"x": [0.02, 0.48], "y": [0.0, 1.0]}, "projection": {"type": "natural earth"}, "showcoastlines": true, "coastlinecolor": "#ddd", "showland": true, "landcolor": "#f5f2ed", "showocean": true, "oceancolor": "#E8F4F8", "countrycolor": "#ddd", "countrywidth": 0.5, "showframe": false, "bgcolor": "#fffef5"}, "geo2": {"domain": {"x": [0.52, 0.98], "y": [0.0, 1.0]}, "projection": {"type": "natural earth"}, "showcoastlines": true, "coastlinecolor": "#ddd", "showland": true, "landcolor": "#f5f2ed", "showocean": true, "oceancolor": "#E8F4F8", "countrycolor": "#ddd", "countrywidth": 0.5, "showframe": false, "bgcolor": "#fffef5"}, "annotations": [{"font": {"size": 12}, "showarrow": false, "text": "Pre-War (2021)", "x": 0.25, "xanchor": "center", "xref": "paper", "y": 0.95, "yanchor": "top", "yref": "paper"}, {"font": {"size": 12}, "showarrow": false, "text": "Wartime (2022-2024)", "x": 0.75, "xanchor": "center", "xref": "paper", "y": 0.95, "yanchor": "top", "yref": "paper"}], "font": {"family": "Inter, Arial, sans-serif", "size": 10}, "margin": {"l": 0, "r": 0, "t": 15, "b": 0}, "height": 320, "showlegend": false, "paper_bgcolor": "#fffef5", "plot_bgcolor": "#fffef5"};
         Plotly.newPlot('alignment-map', plotlyData, plotlyLayout, {responsive: true, displayModeBar: false});
       </script>
-    </div>
+    </article>
 
 
-    <!-- Project 3: Leading with AI -->
-    <div class="project">
+    <!-- Leading with AI -->
+    <article class="project">
       <div class="project-category">Teamwork with AI</div>
-      <h3 class="project-headline">Directing with clarity: how teams move 10x faster without breaking systems</h3>
+      <h2 class="project-headline">Directing with clarity: how teams move 10x faster without breaking systems</h2>
 
       <div class="project-body">
         <p><strong>The problem:</strong> AI gives teams tremendous speed. But speed without clarity breaks systems; when every engineer can ship in hours instead of days, components collide if boundaries aren't crystal clear.</p>
 
         <p><strong>Three patterns that work:</strong></p>
 
-        <p><span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Requirements</span>: document system constraints upfront (throughput, latency, state ownership, recovery targets). Pin it in your chat; you'll refer to it constantly when validating frameworks and debugging.</p>
+        <p><span class="keyword">Requirements</span>: document system constraints upfront (throughput, latency, state ownership, recovery targets). Pin it in your chat; you'll refer to it constantly when validating frameworks and debugging.</p>
 
-        <p><span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Contracts</span>: define API specs and error cases before building; everyone develops against it. A message queue looked perfect until validation flagged a concurrency issue that broke the contract.</p>
+        <p><span class="keyword">Contracts</span>: define API specs and error cases before building; everyone develops against it. A message queue looked perfect until validation flagged a concurrency issue that broke the contract.</p>
 
-        <div style="border: 1px solid var(--border); border-radius: 3px; margin: 1.5rem 0; overflow: hidden;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-            <tr style="background: var(--accent-light);">
-              <th style="padding: 0.8rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border);">Aspect</th>
-              <th style="padding: 0.8rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border);">Description</th>
+        <div class="figure">
+          <table class="contract-table">
+            <thead>
+            <tr>
+              <th scope="col">Aspect</th>
+              <th scope="col">Description</th>
             </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.8rem;"><strong>Operation</strong></td>
-              <td style="padding: 0.8rem;">Fetch user profile</td>
+            </thead>
+            <tbody>
+            <tr>
+              <td><strong>Operation</strong></td>
+              <td>Fetch user profile</td>
             </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.8rem;"><strong>Invoker</strong></td>
-              <td style="padding: 0.8rem;">Web Service</td>
+            <tr>
+              <td><strong>Invoker</strong></td>
+              <td>Web Service</td>
             </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.8rem;"><strong>Responder</strong></td>
-              <td style="padding: 0.8rem;">User Service</td>
+            <tr>
+              <td><strong>Responder</strong></td>
+              <td>User Service</td>
             </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.8rem;"><strong>Request</strong></td>
-              <td style="padding: 0.8rem;"><span class="hover-json" data-json="GET /api/users/{id}
+            <tr>
+              <td><strong>Request</strong></td>
+              <td><span class="hover-json" data-json="GET /api/users/{id}
 timeout: 5s
 headers: {
   &quot;Accept&quot;: &quot;application/json&quot;
 }">request.json</span></td>
             </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.8rem;"><strong>Response</strong></td>
-              <td style="padding: 0.8rem;"><span class="hover-json" data-json="200 OK
+            <tr>
+              <td><strong>Response</strong></td>
+              <td><span class="hover-json" data-json="200 OK
 {
   &quot;id&quot;: &quot;user-123&quot;,
   &quot;name&quot;: &quot;Alice&quot;,
@@ -675,13 +680,14 @@ headers: {
 }">response.json</span> (200 OK)</td>
             </tr>
             <tr>
-              <td style="padding: 0.8rem;"><strong>Errors</strong></td>
-              <td style="padding: 0.8rem;">404 (not found), 500 (service error)</td>
+              <td><strong>Errors</strong></td>
+              <td>404 (not found), 500 (service error)</td>
             </tr>
+            </tbody>
           </table>
         </div>
 
-        <p><span style="background: var(--accent-light); padding: 0.2rem 0.5rem; border-radius: 2px;">Validate</span>: ask the AI to map the relevant subset from requirements and contracts, then validate the framework against both. When the system went live, it fitted on the first try; not because the AI was perfect, but because teammates trusted the contract and I owned the failures.</p>
+        <p><span class="keyword">Validate</span>: ask the AI to map the relevant subset from requirements and contracts, then validate the framework against both. When the system went live, it fitted on the first try; not because the AI was perfect, but because teammates trusted the contract and I owned the failures.</p>
       </div>
 
       <div class="project-impact">
@@ -695,36 +701,24 @@ headers: {
         <span class="tech">Contract-Driven Design</span>
         <span class="tech">AI-Assisted Development</span>
       </div>
-    </div>
+    </article>
 
 
     <!-- Philosophy -->
-    <div class="philosophy">
-      <h3>First Principles</h3>
+    <section class="philosophy">
+      <h2>First Principles</h2>
       <p><strong>Start from the problem, not the symptom.</strong> What makes this a problem? Is it a scaling issue, a generalization failure, or a coordination bottleneck? The diagnosis shapes the solution.</p>
       <p><strong>Understand the constraint.</strong> Is this UI work (users first), ML work (metric vs. compute), or systems work (latency vs. throughput)? The audience and the tradeoff space matter.</p>
       <p><strong>Document as you build.</strong> Contracts, requirements, design choices, not as an afterthought, but as the backbone of the work.</p>
-    </div>
+    </section>
 
-  </div>
+  </main>
 
   <!-- Footer -->
-  <div class="footer">
+  <footer class="footer">
     <p>Oulu, Finland • <a href="mailto:risat.ishtiaque@gmail.com">risat.ishtiaque@gmail.com</a> • <a href="https://github.com/Ishtiaque-Ahmed-Risat">GitHub</a> • <a href="https://linkedin.com/in/ishtiaque-ahmed-5218831a7">LinkedIn</a></p>
     <p>Available for consulting on ML systems.</p>
-  </div>
-
-  <script>
-    function toggleDetails(event) {
-      event.preventDefault();
-      const btn = event.target;
-      const details = btn.nextElementSibling;
-      const isOpen = details.classList.contains('show');
-
-      details.classList.toggle('show');
-      btn.textContent = isOpen ? 'Architecture decisions' : 'Close';
-    }
-  </script>
+  </footer>
 
 </body>
 </html>

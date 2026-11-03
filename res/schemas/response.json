@@ -1,6 +1,0 @@
-200 OK
-{
-  "id": "user-123",
-  "name": "Alice",
-  "status": "active"
-}
