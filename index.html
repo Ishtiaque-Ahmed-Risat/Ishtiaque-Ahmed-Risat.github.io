@@ -96,6 +96,11 @@
       color: var(--text-subtle);
     }
 
+    /* One phrase per line: the break always falls after "I've solved" */
+    .intro p span {
+      display: inline-block;
+    }
+
     /* Main Content */
     .container {
       max-width: 750px;
@@ -127,11 +132,21 @@
 
     .project-headline {
       font-family: 'Crimson Text', serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 400;
       color: var(--text);
+      margin-bottom: 0.4rem;
+      line-height: 1.25;
+    }
+
+    .project-dek {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.45;
       margin-bottom: 1.5rem;
-      line-height: 1.4;
+      text-wrap: pretty;
     }
 
     .project-body {
@@ -192,13 +207,6 @@
       font-weight: 500;
     }
 
-    /* Highlighted keyword in body text */
-    .keyword {
-      background: var(--accent-light);
-      padding: 0.2rem 0.5rem;
-      border-radius: 2px;
-    }
-
     /* Bordered frame around diagrams, maps and tables */
     .figure {
       border: 1px solid var(--border);
@@ -232,7 +240,7 @@
 
     #alignment-map {
       width: 100%;
-      height: 320px;
+      height: 380px;
     }
 
     /* Contract table */
@@ -246,15 +254,36 @@
       background: var(--accent-light);
     }
 
-    .contract-table th {
+    .contract-table thead th {
       padding: 0.8rem;
       text-align: left;
       font-weight: 600;
       border-bottom: 1px solid var(--border);
     }
 
-    .contract-table td {
+    .contract-table td,
+    .contract-table tbody th {
       padding: 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .contract-table tbody th {
+      width: 9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contract-table .contract-key td {
+      color: var(--text);
+    }
+
+    .contract-table code {
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.8rem;
+      background: var(--accent-light);
+      padding: 0.1rem 0.3rem;
+      border-radius: 2px;
     }
 
     .contract-table tbody tr {
@@ -264,6 +293,43 @@
     .contract-table tbody tr:last-child {
       border-bottom: none;
     }
+
+    /* Siamese diagram: wide layout on desktop, stacked layout on phones */
+    .diagram-tall { display: none; }
+    .diagram-siamese .thumb { fill: var(--bg); stroke: #ccc; stroke-width: 1; }
+    .diagram-siamese .tile { fill: #C5EFF5; }
+    .diagram-siamese .defect { fill: #E06C6C; }
+    .diagram-siamese .mask { fill: #2b2b2b; }
+    .diagram-siamese .mask-hit { fill: #fffef5; }
+    .diagram-siamese .encoder { fill: #C5EFF5; stroke: #b5dfe5; stroke-width: 1; rx: 3; }
+    .diagram-siamese .fusion { fill: var(--accent); }
+    .diagram-siamese .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #333; text-anchor: middle; font-weight: 500; }
+    .diagram-siamese .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #fff; text-anchor: middle; font-weight: 500; }
+    .diagram-siamese .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #777; text-anchor: middle; font-style: italic; }
+    .diagram-siamese .arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; }
+    .diagram-siamese .arrow-dashed { stroke-dasharray: 4,3; }
+    .diagram-siamese .arrowhead { fill: var(--accent); }
+
+    /* Zenoh diagram */
+    .diagram-zenoh .node { fill: var(--bg); stroke: #ccc; stroke-width: 1; rx: 3; }
+    .diagram-zenoh .stack-back { fill: #f3f0e9; }
+    .diagram-zenoh .controller { fill: var(--accent); rx: 4; }
+    .diagram-zenoh .bus { fill: #dcebef; }
+    .diagram-zenoh .label { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #333; text-anchor: middle; font-weight: 500; }
+    .diagram-zenoh .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 13px; fill: #fff; text-anchor: middle; font-weight: 500; }
+    .diagram-zenoh .label-bus { font-family: 'Inter', Arial, sans-serif; font-size: 12px; fill: var(--accent); text-anchor: middle; font-weight: 600; }
+    .diagram-zenoh .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #777; text-anchor: middle; }
+    .diagram-zenoh .sublabel-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: rgba(255,255,255,0.8); text-anchor: middle; }
+    .diagram-zenoh .edge-label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: var(--accent); text-anchor: middle; }
+    .diagram-zenoh .edge-start { text-anchor: start; }
+    .diagram-zenoh .edge-end { text-anchor: end; }
+    .diagram-zenoh .note { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #888; text-anchor: middle; font-style: italic; }
+    .diagram-zenoh .arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; }
+    .diagram-zenoh .arrow-dashed { stroke-dasharray: 4,3; }
+    .diagram-zenoh .arrowhead { fill: var(--accent); }
+    .diagram-zenoh .arrow-future { stroke: #aaa; stroke-width: 1.2; fill: none; stroke-dasharray: 2,4; }
+    .diagram-zenoh .arrowhead-future { fill: #aaa; }
+    .diagram-zenoh .tick { stroke: #b9d3da; stroke-width: 1; stroke-dasharray: 2,2; }
 
     /* Philosophy */
     .philosophy {
@@ -319,7 +385,7 @@
       }
 
       .project-headline {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
 
       .hero {
@@ -345,8 +411,16 @@
         font-size: 1rem;
       }
 
+      .intro p {
+        font-size: 1.15rem;
+      }
+
       .project-headline {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+      }
+
+      .project-dek {
+        font-size: 1.1rem;
       }
 
       .hero {
@@ -360,46 +434,65 @@
       .philosophy {
         padding: 1.5rem;
       }
+
+      #alignment-map {
+        height: 260px;
+      }
+
+      .contract-table tbody th {
+        width: 6.5rem;
+      }
+
+      .diagram-wide { display: none; }
+      .diagram-tall { display: block; }
     }
 
-    /* Hover JSON Tooltip */
-    .hover-json {
+    /* JSON sample: shown on hover, tap or keyboard focus; never navigates */
+    .json-sample {
       position: relative;
-      cursor: help;
+      cursor: pointer;
       color: var(--accent);
       font-weight: 500;
       border-bottom: 1px dotted var(--accent);
-      text-decoration: none;
+      outline: none;
     }
 
-    .hover-json:hover::after {
+    .json-sample:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .json-sample:hover::after,
+    .json-sample:focus::after {
       content: attr(data-json);
       position: absolute;
-      bottom: 125%;
+      bottom: 140%;
       left: 50%;
       transform: translateX(-50%);
+      width: min(280px, 70vw);
       background: var(--text);
       color: var(--bg);
       padding: 0.8rem;
       border-radius: 3px;
       font-family: 'Monaco', 'Courier New', monospace;
-      font-size: 0.75rem;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      width: 280px;
+      font-size: 0.72rem;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: pre;
+      overflow-x: auto;
       z-index: 10;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       pointer-events: none;
-      font-weight: 400;
     }
 
-    .hover-json:hover::before {
+    .json-sample:hover::before,
+    .json-sample:focus::before {
       content: '';
       position: absolute;
-      bottom: 115%;
+      bottom: 105%;
       left: 50%;
       transform: translateX(-50%);
-      border: 5px solid transparent;
+      border: 6px solid transparent;
       border-top-color: var(--text);
       z-index: 10;
       pointer-events: none;
@@ -417,84 +510,90 @@
     <!-- Intro -->
     <div class="intro">
       <p>
-        Here I write about my projects and the problems I've solved.
+        <span>Here I write about the problems I've solved</span>
+        <span>and what I've learned along the way.</span>
       </p>
     </div>
 
     <!-- Siamese SegFormer -->
     <article class="project">
       <div class="project-category">Computer Vision</div>
-      <h2 class="project-headline">SegFormer with Siamese Cross-Attention: template separation for centimeter-level defect generalization</h2>
+      <h2 class="project-headline">Defects Are Differences</h2>
+      <p class="project-dek">Instead of memorizing every template, the model now compares against it.</p>
 
       <div class="project-body">
-        <p><strong>The problem:</strong> Existing SegFormer model worked well on existing templates but triggered false positives on new templates. Mitigation needed finetuning on every new template; not scalable. Root cause: a single encoder cannot distinguish defect pattern on known template from new template structure.</p>
+        <p><strong>The problem:</strong> A production SegFormer model segmented defects with centimeter-level precision on a finite set of template objects. Still, every new template brought into the system meant false positives and another round of fine-tuning.</p>
 
-        <p><strong>The solution is threefold:</strong></p>
+        <p><strong>The diagnosis:</strong> A single encoder has to learn two things at once: what each template looks like, and what a defect looks like. Faced with an unseen template, it confuses the first with the second.</p>
 
-        <p><span class="keyword">Rearchitect to Siamese</span>: Separate encoders (template and target) using pre-trained weights. <span class="keyword">Cross-Attention Fusion</span>: Feature-level attention forces the network to learn template-defect distinctions explicitly. <span class="keyword">Representation Learning</span>: Inductive bias from Siamese structure teaches invariants, not memorization.</p>
-
-        <p>Architectural separation is an inductive bias. The network learns structural distinctions (what makes a defect) rather than memorizing appearances. New templates generalize because the learned boundary is invariant.</p>
+        <p><strong>The fix:</strong> Since the templates are known, give the model the reference instead of asking it to memorize one. In a Siamese setup, two SegFormer encoders, both starting from pre-trained weights, embed the template and the target, and cross-attention fuses their features before decoding. The architecture now encodes the right inductive bias: a defect is whatever differs from the template. Template features are computed once and cached, so inference still takes a single pass.</p>
       </div>
 
       <div class="figure">
-        <svg class="diagram diagram-siamese" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg">
+        <svg class="diagram diagram-siamese diagram-wide" viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Template and target images each pass through a SegFormer encoder; cross-attention fuses them; a decoder outputs the defect map. Template features are cached.">
           <defs>
-            <style>
-              .diagram-siamese .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
-              .diagram-siamese .box-encoder { fill: #C5EFF5; }
-              .diagram-siamese .fusion-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
-              .diagram-siamese .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
-              .diagram-siamese .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
-              .diagram-siamese .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
-              .diagram-siamese .arrow { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
-              .diagram-siamese .arrow-dashed { stroke: #1e5f74; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; marker-end: url(#arrowhead); }
-              .diagram-siamese .diagram-title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
-            </style>
-            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
-            </marker>
+            <marker id="arrowhead-wide" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead"/></marker>
           </defs>
-          <text x="500" y="30" class="diagram-title">Siamese SegFormer: Template Separation for Defect Generalization</text>
-          <rect x="75" y="60" width="90" height="120" class="box"/>
-          <text x="120" y="125" class="label">Template</text>
-          <rect x="75" y="200" width="90" height="120" class="box"/>
-          <text x="120" y="265" class="label">Target Image</text>
-          <rect x="250" y="80" width="120" height="100" class="box box-encoder"/>
-          <text x="310" y="115" class="label">SegFormer</text>
-          <text x="310" y="130" class="label">Encoder</text>
-          <rect x="250" y="200" width="120" height="100" class="box box-encoder"/>
-          <text x="310" y="240" class="label">SegFormer</text>
-          <text x="310" y="255" class="label">Encoder</text>
-          <line x1="165" y1="120" x2="250" y2="130" class="arrow"/>
-          <line x1="165" y1="260" x2="250" y2="250" class="arrow"/>
-          <rect x="450" y="130" width="180" height="120" class="fusion-box" rx="8"/>
-          <text x="540" y="190" class="label-white">Cross-Attention</text>
-          <line x1="370" y1="130" x2="450" y2="165" class="arrow-dashed"/>
-          <text x="395" y="120" class="sublabel">cached</text>
-          <line x1="370" y1="250" x2="450" y2="185" class="arrow"/>
-          <text x="400" y="270" class="sublabel">processed</text>
-          <rect x="710" y="130" width="120" height="120" class="box box-encoder"/>
-          <text x="770" y="170" class="label">SegFormer</text>
-          <text x="770" y="185" class="label">Decoder</text>
-          <line x1="630" y1="190" x2="710" y2="190" class="arrow"/>
-          <rect x="900" y="130" width="80" height="120" class="box"/>
-          <text x="940" y="165" class="label">Defect</text>
-          <text x="940" y="180" class="label">Map</text>
-          <line x1="830" y1="190" x2="900" y2="190" class="arrow"/>
+          <rect x="20" y="25" width="70" height="70" rx="3" class="thumb"/><rect x="29" y="34" width="14" height="14" rx="2" class="tile"/><rect x="48" y="34" width="14" height="14" rx="2" class="tile"/><rect x="67" y="34" width="14" height="14" rx="2" class="tile"/><rect x="29" y="53" width="14" height="14" rx="2" class="tile"/><rect x="48" y="53" width="14" height="14" rx="2" class="tile"/><rect x="67" y="53" width="14" height="14" rx="2" class="tile"/><rect x="29" y="72" width="14" height="14" rx="2" class="tile"/><rect x="48" y="72" width="14" height="14" rx="2" class="tile"/><rect x="67" y="72" width="14" height="14" rx="2" class="tile"/>
+          <text x="55" y="114" class="label">Template</text>
+          <rect x="20" y="145" width="70" height="70" rx="3" class="thumb"/><rect x="29" y="154" width="14" height="14" rx="2" class="tile"/><rect x="48" y="154" width="14" height="14" rx="2" class="tile"/><rect x="67" y="154" width="14" height="14" rx="2" class="tile"/><rect x="29" y="173" width="14" height="14" rx="2" class="tile"/><rect x="48" y="173" width="14" height="14" rx="2" class="tile"/><rect x="67" y="173" width="14" height="14" rx="2" class="tile"/><rect x="29" y="192" width="14" height="14" rx="2" class="tile"/><rect x="48" y="192" width="14" height="14" rx="2" class="tile"/><rect x="67" y="192" width="14" height="14" rx="2" class="tile"/><ellipse cx="66" cy="172" rx="8" ry="5" class="defect"/>
+          <text x="55" y="234" class="label">Target</text>
+          <rect x="125" y="32" width="120" height="56" class="encoder"/>
+          <text x="185" y="57" class="label">SegFormer</text><text x="185" y="73" class="label">encoder</text>
+          <rect x="125" y="152" width="120" height="56" class="encoder"/>
+          <text x="185" y="177" class="label">SegFormer</text><text x="185" y="193" class="label">encoder</text>
+          <line x1="90" y1="60" x2="122" y2="60" class="arrow" marker-end="url(#arrowhead-wide)"/>
+          <line x1="90" y1="180" x2="122" y2="180" class="arrow" marker-end="url(#arrowhead-wide)"/>
+          <rect x="290" y="85" width="120" height="70" rx="6" class="fusion"/>
+          <text x="350" y="125" class="label-white">Cross-attention</text>
+          <path d="M245 60 C 270 60, 270 100, 287 105" class="arrow arrow-dashed" marker-end="url(#arrowhead-wide)"/>
+          <text x="268" y="50" class="sublabel">cached</text>
+          <path d="M245 180 C 270 180, 270 140, 287 135" class="arrow" marker-end="url(#arrowhead-wide)"/>
+          <rect x="455" y="92" width="100" height="56" class="encoder"/>
+          <text x="505" y="117" class="label">SegFormer</text><text x="505" y="133" class="label">decoder</text>
+          <line x1="410" y1="120" x2="452" y2="120" class="arrow" marker-end="url(#arrowhead-wide)"/>
+          <rect x="590" y="85" width="70" height="70" rx="3" class="mask"/><ellipse cx="636" cy="112" rx="8" ry="5" class="mask-hit"/>
+          <text x="625" y="174" class="label">Defect map</text>
+          <line x1="555" y1="120" x2="587" y2="120" class="arrow" marker-end="url(#arrowhead-wide)"/>
+        </svg>
+        <svg class="diagram diagram-siamese diagram-tall" viewBox="0 0 340 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Template and target images each pass through a SegFormer encoder; cross-attention fuses them; a decoder outputs the defect map. Template features are cached.">
+          <defs>
+            <marker id="arrowhead-tall" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead"/></marker>
+          </defs>
+          <rect x="55" y="15" width="70" height="70" rx="3" class="thumb"/><rect x="64" y="24" width="14" height="14" rx="2" class="tile"/><rect x="83" y="24" width="14" height="14" rx="2" class="tile"/><rect x="102" y="24" width="14" height="14" rx="2" class="tile"/><rect x="64" y="43" width="14" height="14" rx="2" class="tile"/><rect x="83" y="43" width="14" height="14" rx="2" class="tile"/><rect x="102" y="43" width="14" height="14" rx="2" class="tile"/><rect x="64" y="62" width="14" height="14" rx="2" class="tile"/><rect x="83" y="62" width="14" height="14" rx="2" class="tile"/><rect x="102" y="62" width="14" height="14" rx="2" class="tile"/>
+          <text x="90" y="104" class="label">Template</text>
+          <rect x="215" y="15" width="70" height="70" rx="3" class="thumb"/><rect x="224" y="24" width="14" height="14" rx="2" class="tile"/><rect x="243" y="24" width="14" height="14" rx="2" class="tile"/><rect x="262" y="24" width="14" height="14" rx="2" class="tile"/><rect x="224" y="43" width="14" height="14" rx="2" class="tile"/><rect x="243" y="43" width="14" height="14" rx="2" class="tile"/><rect x="262" y="43" width="14" height="14" rx="2" class="tile"/><rect x="224" y="62" width="14" height="14" rx="2" class="tile"/><rect x="243" y="62" width="14" height="14" rx="2" class="tile"/><rect x="262" y="62" width="14" height="14" rx="2" class="tile"/><ellipse cx="261" cy="42" rx="8" ry="5" class="defect"/>
+          <text x="250" y="104" class="label">Target</text>
+          <line x1="90" y1="112" x2="90" y2="132" class="arrow" marker-end="url(#arrowhead-tall)"/>
+          <line x1="250" y1="112" x2="250" y2="132" class="arrow" marker-end="url(#arrowhead-tall)"/>
+          <rect x="25" y="135" width="130" height="52" class="encoder"/>
+          <text x="90" y="158" class="label">SegFormer</text><text x="90" y="174" class="label">encoder</text>
+          <rect x="185" y="135" width="130" height="52" class="encoder"/>
+          <text x="250" y="158" class="label">SegFormer</text><text x="250" y="174" class="label">encoder</text>
+          <path d="M90 187 C 90 215, 140 210, 150 232" class="arrow arrow-dashed" marker-end="url(#arrowhead-tall)"/>
+          <text x="80" y="222" class="sublabel">cached</text>
+          <path d="M250 187 C 250 215, 200 210, 190 232" class="arrow" marker-end="url(#arrowhead-tall)"/>
+          <rect x="95" y="235" width="150" height="60" rx="6" class="fusion"/>
+          <text x="170" y="270" class="label-white">Cross-attention</text>
+          <line x1="170" y1="295" x2="170" y2="322" class="arrow" marker-end="url(#arrowhead-tall)"/>
+          <rect x="105" y="325" width="130" height="52" class="encoder"/>
+          <text x="170" y="348" class="label">SegFormer</text><text x="170" y="364" class="label">decoder</text>
+          <line x1="170" y1="377" x2="170" y2="402" class="arrow" marker-end="url(#arrowhead-tall)"/>
+          <rect x="135" y="405" width="70" height="70" rx="3" class="mask"/><ellipse cx="181" cy="432" rx="8" ry="5" class="mask-hit"/>
+          <text x="170" y="494" class="label">Defect map</text>
         </svg>
       </div>
 
       <div class="project-impact">
         <div class="impact-label">Result</div>
-        Generalization to unseen templates without retraining. The icing: 8% F1 improvement on existing templates!
+        New templates work without fine-tuning. The icing we never asked for: F1 on existing templates rose 9% from a baseline of 79%.
       </div>
 
       <div class="tech-stack">
         <span class="tech">SegFormer</span>
         <span class="tech">Siamese Networks</span>
         <span class="tech">Cross-Attention</span>
-        <span class="tech">Vision Transformers</span>
-        <span class="tech">Deep Learning</span>
+        <span class="tech">Semantic Segmentation</span>
       </div>
     </article>
 
@@ -502,86 +601,85 @@
     <!-- Zenoh Distributed Systems -->
     <article class="project">
       <div class="project-category">Systems Architecture</div>
-      <h2 class="project-headline">A case for Zenoh: unified query-response and pub-sub on one transport</h2>
+      <h2 class="project-headline">Centralized Now, Peer to Peer Later</h2>
+      <p class="project-dek">Ship the simple version first, on a transport that won't lock you into it.</p>
 
       <div class="project-body">
-        <p><strong>Problem:</strong> Building distributed systems requires choosing between RabbitMQ (mature pub-sub, awkward query-response), gRPC (clean RPC, pub-sub as an afterthought), or REST+polling (simple but chatty). Each solves one pattern well; none unifies both.</p>
+        <p><strong>The problem:</strong> A fleet of 100+ heterogeneous cameras needed two kinds of traffic: commands to a specific camera that expect an answer, and status updates streaming back. Version one would be centralized, because that is faster to build. The plan: let the cameras collectively do the controller's job.</p>
 
-        <p><strong>Solution:</strong> Zenoh unifies <strong>queries (RPC)</strong> and <strong>subscriptions (pub-sub)</strong> on one transport. The architecture is simple: stateless API gateways forward every HTTP request as a Zenoh query to the master; event subscriptions are native. No connection pooling, no session management, no coordination overhead.</p>
+        <p><strong>The choice:</strong> NATS and MQTT both need a central server. DDS runs peer to peer but treats request-response as an add-on. Zenoh does both natively and runs peer to peer by configuration, so decentralizing later changes the deployment, not the camera code. The cost: fewer libraries and tools than MQTT.</p>
 
-        <p><strong>Real use case:</strong> I chose Zenoh in a distributed camera system with 100+ heterogeneous camera nodes, stateless gateways, and a master registry. Obtained: instant gateway scaling, transparent router recovery, zero coordination overhead.</p>
+        <p><strong>The design:</strong> Built in Python. Stateless HTTP gateways turn each request into a Zenoh query to the controller, which keeps the camera registry and queries the right camera. Cameras publish status, and the controller subscribes. With no state in the gateways, scaling them means starting another one. Cameras own their state, so a restarted controller rebuilds its registry by querying them.</p>
       </div>
 
       <div class="figure">
-        <svg class="diagram diagram-zenoh" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+        <svg class="diagram diagram-zenoh diagram-wide" viewBox="0 0 680 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTTP clients call stateless gateways; gateways send Zenoh queries to the controller; the controller sends command queries to 100+ cameras, which publish status back. All of it runs over Zenoh, which also allows a later peer-to-peer path from gateways straight to cameras.">
           <defs>
-            <style>
-              .diagram-zenoh .box { fill: #fffef5; stroke: #ddd; stroke-width: 1.2; rx: 3; }
-              .diagram-zenoh .bus-box { fill: #1e5f74; stroke: #0d3a47; stroke-width: 1.5; rx: 6; }
-              /* font-weight 500 was previously inherited from the Siamese diagram's .label rule */
-              .diagram-zenoh .label { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle; font-weight: 500; }
-              .diagram-zenoh .label-strong { font-weight: 600; }
-              .diagram-zenoh .label-white { font-family: 'Inter', Arial, sans-serif; font-size: 11px; fill: white; text-anchor: middle; font-weight: 500; }
-              .diagram-zenoh .sublabel { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #999; text-anchor: middle; }
-              .diagram-zenoh .sublabel-white { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: rgba(255,255,255,0.8); text-anchor: middle; }
-              .diagram-zenoh .arrow-query { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-zenoh); }
-              .diagram-zenoh .arrow-sub { stroke: #1e5f74; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-zenoh); stroke-dasharray: 4,3; }
-              .diagram-zenoh .topic-label { font-family: 'Inter', Arial, sans-serif; font-size: 9px; fill: #1e5f74; }
-              .diagram-zenoh .legend-label { font-family: 'Inter', Arial, sans-serif; font-size: 10px; fill: #333; }
-              .diagram-zenoh .diagram-title { font-family: 'Crimson Text', serif; font-size: 18px; fill: #1a1a1a; text-anchor: middle; font-weight: 400; }
-              .diagram-zenoh .diagram-note { font-family: 'Crimson Text', serif; font-size: 12px; fill: #666; text-anchor: middle; font-style: italic; }
-            </style>
-            <marker id="arrowhead-zenoh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#1e5f74" />
-            </marker>
+            <marker id="zw-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead"/></marker>
+            <marker id="zw-arrow-future" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead-future"/></marker>
           </defs>
-          <text x="450" y="30" class="diagram-title">Zenoh: Unified Query-Response and Pub-Sub</text>
-          <rect x="50" y="150" width="120" height="120" class="box"/>
-          <text x="110" y="200" class="label label-strong">IoT Node</text>
-          <text x="110" y="218" class="sublabel">Camera</text>
-          <text x="110" y="230" class="sublabel">queryable</text>
-          <text x="110" y="242" class="sublabel">publisher</text>
-          <rect x="360" y="140" width="180" height="180" class="bus-box" rx="8"/>
-          <text x="450" y="215" class="label-white">Zenoh</text>
-          <text x="450" y="232" class="sublabel-white">Bus</text>
-          <rect x="730" y="150" width="120" height="120" class="box"/>
-          <text x="790" y="200" class="label label-strong">Controller</text>
-          <text x="790" y="218" class="sublabel">Master</text>
-          <text x="790" y="230" class="sublabel">queryable</text>
-          <text x="790" y="242" class="sublabel">publisher</text>
-          <line x1="170" y1="240" x2="360" y2="240" class="arrow-sub" />
-          <text x="220" y="260" class="topic-label">status (subscribe)</text>
-          <line x1="360" y1="190" x2="170" y2="190" class="arrow-query" />
-          <text x="220" y="175" class="topic-label">command (query)</text>
-          <line x1="540" y1="240" x2="730" y2="240" class="arrow-sub" />
-          <text x="605" y="260" class="topic-label">status (subscribe)</text>
-          <line x1="730" y1="190" x2="540" y2="190" class="arrow-query" />
-          <text x="605" y="175" class="topic-label">command (query)</text>
-          <g>
-            <line x1="80" y1="420" x2="120" y2="420" class="arrow-query" />
-            <text x="140" y="425" class="legend-label">Query: Request-response (command, queryable)</text>
-            <line x1="80" y1="450" x2="120" y2="450" class="arrow-sub" />
-            <text x="140" y="455" class="legend-label">Subscribe: Pub-sub (status, events)</text>
-          </g>
-          <text x="450" y="520" class="diagram-note">All participants use both query and subscribe on one unified transport.</text>
+          <path d="M190 66 C 260 34, 520 34, 587 66" class="arrow-future" marker-end="url(#zw-arrow-future)"/>
+          <text x="388" y="30" class="note">later: peer to peer</text>
+          <rect x="10" y="82" width="80" height="56" class="node"/>
+          <text x="50" y="106" class="label">HTTP</text><text x="50" y="122" class="label">clients</text>
+          <rect x="133" y="74" width="110" height="56" class="node stack-back"/><rect x="129" y="78" width="110" height="56" class="node stack-back"/><rect x="125" y="82" width="110" height="56" class="node"/>
+          <text x="180" y="106" class="label">Gateways</text><text x="180" y="122" class="sublabel">stateless</text>
+          <rect x="295" y="82" width="120" height="56" class="controller"/>
+          <text x="355" y="106" class="label-white">Controller</text><text x="355" y="122" class="sublabel-white">camera registry</text>
+          <rect x="528" y="74" width="140" height="56" class="node stack-back"/><rect x="524" y="78" width="140" height="56" class="node stack-back"/><rect x="520" y="82" width="140" height="56" class="node"/>
+          <text x="590" y="106" class="label">Cameras</text><text x="590" y="122" class="sublabel">100+, heterogeneous</text>
+          <line x1="90" y1="110" x2="122" y2="110" class="arrow" marker-end="url(#zw-arrow)"/>
+          <line x1="235" y1="110" x2="292" y2="110" class="arrow" marker-end="url(#zw-arrow)"/>
+          <text x="263" y="102" class="edge-label">query</text>
+          <line x1="415" y1="98" x2="517" y2="98" class="arrow" marker-end="url(#zw-arrow)"/>
+          <text x="467" y="90" class="edge-label">command (query)</text>
+          <line x1="520" y1="124" x2="418" y2="124" class="arrow arrow-dashed" marker-end="url(#zw-arrow)"/>
+          <text x="469" y="139" class="edge-label">status (pub-sub)</text>
+          <rect x="125" y="168" width="545" height="32" rx="4" class="bus"/>
+          <text x="397" y="189" class="label-bus">Zenoh: queries and pub-sub on one transport</text>
+          <line x1="180" y1="146" x2="180" y2="166" class="tick"/>
+          <line x1="355" y1="138" x2="355" y2="166" class="tick"/>
+          <line x1="590" y1="146" x2="590" y2="166" class="tick"/>
+        </svg>
+        <svg class="diagram diagram-zenoh diagram-tall" viewBox="0 0 340 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTTP clients call stateless gateways; gateways send Zenoh queries to the controller; the controller sends command queries to 100+ cameras, which publish status back. All of it runs over Zenoh, which also allows a later peer-to-peer path from gateways straight to cameras.">
+          <defs>
+            <marker id="zt-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead"/></marker>
+            <marker id="zt-arrow-future" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" class="arrowhead-future"/></marker>
+          </defs>
+          <rect x="105" y="10" width="130" height="46" class="node"/>
+          <text x="170" y="38" class="label">HTTP clients</text>
+          <line x1="170" y1="56" x2="170" y2="82" class="arrow" marker-end="url(#zt-arrow)"/>
+          <rect x="108" y="86" width="140" height="54" class="node stack-back"/><rect x="104" y="90" width="140" height="54" class="node stack-back"/><rect x="100" y="94" width="140" height="54" class="node"/>
+          <text x="170" y="117" class="label">Gateways</text><text x="170" y="133" class="sublabel">stateless</text>
+          <line x1="170" y1="148" x2="170" y2="181" class="arrow" marker-end="url(#zt-arrow)"/>
+          <text x="178" y="169" class="edge-label edge-start">query</text>
+          <rect x="100" y="184" width="140" height="54" class="controller"/>
+          <text x="170" y="207" class="label-white">Controller</text><text x="170" y="223" class="sublabel-white">camera registry</text>
+          <line x1="150" y1="238" x2="150" y2="283" class="arrow" marker-end="url(#zt-arrow)"/>
+          <text x="143" y="265" class="edge-label edge-end">command</text>
+          <line x1="190" y1="294" x2="190" y2="241" class="arrow arrow-dashed" marker-end="url(#zt-arrow)"/>
+          <text x="197" y="265" class="edge-label edge-start">status</text>
+          <rect x="108" y="286" width="140" height="54" class="node stack-back"/><rect x="104" y="290" width="140" height="54" class="node stack-back"/><rect x="100" y="294" width="140" height="54" class="node"/>
+          <text x="170" y="317" class="label">Cameras</text><text x="170" y="333" class="sublabel">100+, heterogeneous</text>
+          <path d="M100 116 C 40 150, 40 280, 97 318" class="arrow-future" marker-end="url(#zt-arrow-future)"/>
+          <text x="34" y="217" class="note" transform="rotate(-90 34 217)">later: peer to peer</text>
+          <rect x="268" y="86" width="30" height="270" rx="4" class="bus"/>
+          <text x="288" y="221" class="label-bus" transform="rotate(-90 288 221)">Zenoh</text>
+          <text x="170" y="378" class="note">Queries and pub-sub on one transport</text>
         </svg>
       </div>
 
       <div class="project-impact">
-        <div class="impact-label">Pattern</div>
-        Stateless gateway + unified queries and subscriptions over one transport layer.
-      </div>
-
-      <div class="project-impact">
         <div class="impact-label">Tradeoff</div>
-        Smaller ecosystem than MQTT/RabbitMQ, no event log (not a Kafka replacement); excellent fit for request-response + events with automatic resilience.
+        Every request passes through the controller, making it a single point of failure for now: the price of shipping centralized first, and the part Zenoh lets us remove.
       </div>
 
       <div class="tech-stack">
         <span class="tech">Zenoh</span>
-        <span class="tech">Message Bus</span>
-        <span class="tech">Distributed Systems</span>
-        <span class="tech">Stateless Services</span>
+        <span class="tech">Python</span>
+        <span class="tech">Pub/Sub</span>
+        <span class="tech">Request-Response</span>
+        <span class="tech">IoT</span>
       </div>
     </article>
 
@@ -589,116 +687,166 @@
     <!-- Geopolitical Alignment -->
     <article class="project">
       <div class="project-category">Data Analysis</div>
-      <h2 class="project-headline">Measuring geopolitical shift: 19.5 million news articles, PySpark pipeline, alignment classification</h2>
+      <h2 class="project-headline">Talk Is Cheap, Show Me the Deeds</h2>
+      <p class="project-dek">Two-thirds of the help went to Ukraine. Half the world still did business with Russia.</p>
 
       <div class="project-body">
-        <p><strong>Pipeline:</strong> Extracted 19.5 million GDELT events from GDELT Global Knowledge Graph via BigQuery, processed with PySpark to compute bilateral Goldstein alignment scores (conflict-cooperation scale -10 to +10). Normalized per-period, applied 33rd percentile threshold for binary classification (Pro-Ukraine / Neutral / Pro-Russia), and visualized geospatial shift across 215+ countries.</p>
+        <p><strong>The question:</strong> Who did the world actually help? Every country had something to say about the war, so I followed the deeds: 19.5 million GDELT news events, filtered down to the trade deals and aid shipments that went to Russia or Ukraine.</p>
 
-        <p><strong>Finding:</strong> Western Europe's alignment reversed within one year. Countries appearing pro-Russia in 2021 due to energy/trade ties (Germany: -9,811 total Goldstein, France: -10,613) flipped decisively pro-Ukraine by 2022-2024 (Germany: +292,279, France: +154,737). The shift is statistically sharp, not gradual; a historical inflection point visible in global media discourse.</p>
+        <p><strong>The finding:</strong> The total and the countries tell different stories. A few big donors move the total. The map shows everyone else.</p>
+
+        <p><strong>The outliers:</strong> Hungary, the EU's loudest sceptic, sent most of its help to Ukraine. Serbia, which never sanctioned Russia, split down the middle. Finland talks about Russia but helps Ukraine. China and India kept doing business with Moscow.</p>
       </div>
 
-      <div class="project-impact">
-        <div class="impact-label">Data</div>
-        19.5 million GDELT events, 4 years, 150+ countries. Geopolitical realignment revealed in single year post-invasion.
+      <div class="figure figure-map">
+        <div id="alignment-map"></div>
+        <p class="figure-caption">Share of each country's cooperative deeds (trade, aid) that went to Ukraine rather than Russia, 2022 to 2024. Hover for what it talked about. Blank: fewer than 30 deeds. Dark: Russia and Ukraine.</p>
       </div>
+      <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+      <script>
+        // Per country: [ISO-3, name, share of cooperative deeds toward Ukraine, same as %, share of talk toward Ukraine, deeds counted].
+        // Deeds: CAMEO 06 (economic cooperation) and 07 (aid). Talk: CAMEO 01 to 05. Events with at least 3 mentions, Feb 2022 to Dec 2024.
+        var DEEDS = [["AFG","Afghanistan",0.362,"36%","24%","367"],["ALB","Albania",0.562,"56%","64%","144"],["ARE","United Arab Emirates",0.291,"29%","19%","203"],["ARG","Argentina",0.61,"61%","50%","223"],["ARM","Armenia",0.136,"14%","6%","1,264"],["AUS","Australia",0.807,"81%","58%","2,033"],["AUT","Austria",0.622,"62%","43%","690"],["AZE","Azerbaijan",0.364,"36%","9%","1,407"],["BEL","Belgium",0.771,"77%","69%","2,107"],["BGD","Bangladesh",0.187,"19%","18%","214"],["BGR","Bulgaria",0.796,"80%","60%","2,871"],["BLR","Belarus",0.3,"30%","30%","4,024"],["BOL","Bolivia",0.049,"5%","11%","41"],["BRA","Brazil",0.46,"46%","44%","678"],["CAF","Central African Republic",0.25,"25%","5%","32"],["CAN","Canada",0.846,"85%","74%","4,544"],["CHE","Switzerland",0.708,"71%","67%","1,640"],["CHL","Chile",0.516,"52%","54%","31"],["CHN","China",0.173,"17%","26%","11,036"],["CMR","Cameroon",0.265,"27%","21%","49"],["COG","Congo",0.219,"22%","25%","32"],["COL","Colombia",0.615,"62%","50%","117"],["CUB","Cuba",0.107,"11%","6%","326"],["CYP","Cyprus",0.552,"55%","37%","165"],["CZE","Czechia",0.819,"82%","70%","2,775"],["DEU","Germany",0.779,"78%","64%","15,223"],["DNK","Denmark",0.927,"93%","73%","2,868"],["DZA","Algeria",0.321,"32%","19%","187"],["ECU","Ecuador",0.155,"15%","39%","168"],["EGY","Egypt",0.343,"34%","21%","909"],["ERI","Eritrea",0.386,"39%","8%","44"],["ESP","Spain",0.83,"83%","72%","1,955"],["EST","Estonia",0.864,"86%","54%","2,277"],["ETH","Ethiopia",0.453,"45%","27%","64"],["FIN","Finland",0.671,"67%","36%","2,500"],["FRA","France",0.806,"81%","63%","7,281"],["GBR","United Kingdom",0.798,"80%","65%","12,690"],["GHA","Ghana",0.447,"45%","53%","38"],["GRC","Greece",0.687,"69%","68%","1,414"],["HRV","Croatia",0.89,"89%","80%","773"],["HUN","Hungary",0.844,"84%","60%","3,768"],["IDN","Indonesia",0.397,"40%","38%","436"],["IND","India",0.312,"31%","36%","397"],["IRL","Ireland",0.914,"91%","77%","1,432"],["IRN","Iran",0.118,"12%","13%","4,057"],["IRQ","Iraq",0.362,"36%","35%","210"],["ISL","Iceland",0.97,"97%","64%","101"],["ISR","Israel",0.819,"82%","52%","3,887"],["ITA","Italy",0.718,"72%","67%","2,731"],["JOR","Jordan",0.655,"65%","39%","110"],["JPN","Japan",0.565,"57%","50%","3,181"],["KAZ","Kazakhstan",0.163,"16%","13%","910"],["KEN","Kenya",0.429,"43%","36%","119"],["KGZ","Kyrgyzstan",0.077,"8%","5%","443"],["KHM","Cambodia",0.795,"80%","49%","44"],["KOR","South Korea",0.51,"51%","39%","3,683"],["KWT","Kuwait",0.707,"71%","48%","41"],["LBN","Lebanon",0.659,"66%","44%","258"],["LBY","Libya",0.385,"39%","18%","109"],["LKA","Sri Lanka",0.306,"31%","15%","124"],["LTU","Lithuania",0.803,"80%","63%","3,299"],["LUX","Luxembourg",0.814,"81%","73%","231"],["LVA","Latvia",0.711,"71%","54%","1,843"],["MAR","Morocco",0.4,"40%","42%","140"],["MDA","Moldova",0.656,"66%","53%","1,639"],["MDV","Maldives",0.479,"48%","39%","144"],["MEX","Mexico",0.54,"54%","48%","326"],["MKD","North Macedonia",0.828,"83%","52%","227"],["MLI","Mali",0.08,"8%","13%","150"],["MLT","Malta",0.728,"73%","63%","81"],["MMR","Myanmar",0.176,"18%","10%","85"],["MNG","Mongolia",0.094,"9%","11%","139"],["MYS","Malaysia",0.255,"26%","25%","98"],["NER","Niger",0.0,"0%","7%","49"],["NGA","Nigeria",0.512,"51%","40%","248"],["NIC","Nicaragua",0.083,"8%","7%","48"],["NLD","Netherlands",0.851,"85%","77%","2,493"],["NOR","Norway",0.856,"86%","67%","2,945"],["NPL","Nepal",0.058,"6%","10%","69"],["NZL","New Zealand",0.728,"73%","68%","401"],["OMN","Oman",0.094,"9%","20%","64"],["PAK","Pakistan",0.357,"36%","16%","711"],["PER","Peru",0.512,"51%","37%","43"],["PHL","Philippines",0.489,"49%","46%","90"],["POL","Poland",0.874,"87%","74%","8,577"],["PRK","North Korea",0.203,"20%","12%","6,340"],["PRT","Portugal",0.895,"90%","68%","477"],["PSE","Palestine",0.512,"51%","31%","324"],["QAT","Qatar",0.625,"62%","45%","261"],["SAU","Saudi Arabia",0.476,"48%","46%","657"],["SDN","Sudan",0.405,"41%","20%","190"],["SEN","Senegal",0.378,"38%","38%","37"],["SGP","Singapore",0.37,"37%","48%","100"],["SOM","Somalia",0.476,"48%","36%","185"],["SRB","Serbia",0.516,"52%","26%","682"],["SVK","Slovakia",0.859,"86%","72%","2,652"],["SWE","Sweden",0.875,"88%","60%","2,409"],["SYR","Syria",0.211,"21%","14%","877"],["THA","Thailand",0.252,"25%","19%","159"],["TJK","Tajikistan",0.037,"4%","3%","109"],["TKM","Turkmenistan",0.104,"10%","3%","115"],["TUN","Tunisia",0.695,"70%","28%","82"],["TUR","Türkiye",0.528,"53%","40%","4,026"],["TWN","Taiwan",0.73,"73%","66%","692"],["UGA","Uganda",0.125,"12%","19%","40"],["USA","United States",0.773,"77%","58%","43,959"],["UZB","Uzbekistan",0.135,"14%","7%","251"],["VAT","Vatican City",0.826,"83%","62%","178"],["VEN","Venezuela",0.134,"13%","7%","179"],["VNM","Vietnam",0.198,"20%","13%","333"],["YEM","Yemen",0.641,"64%","32%","170"],["ZAF","South Africa",0.263,"26%","24%","137"],["ZWE","Zimbabwe",0.329,"33%","12%","79"]];
+        (function () {
+          var line = {color: '#fffef5', width: 0.5};
+          Plotly.newPlot('alignment-map', [
+            {
+              type: 'choropleth', locationmode: 'ISO-3',
+              locations: DEEDS.map(function (r) { return r[0]; }),
+              z: DEEDS.map(function (r) { return r[2]; }),
+              customdata: DEEDS.map(function (r) { return [r[1], r[3], r[4], r[5]]; }),
+              hovertemplate: '<b>%{customdata[0]}</b><br>Deeds toward Ukraine: %{customdata[1]}<br>Talk toward Ukraine: %{customdata[2]}<br>%{customdata[3]} deeds<extra></extra>',
+              colorscale: [[0, '#E06C6C'], [0.5, '#d4cbbb'], [1, '#4F86E0']], zmin: 0, zmax: 1,
+              marker: {line: line},
+              colorbar: {
+                orientation: 'h', x: 0.5, xanchor: 'center', y: -0.02, yanchor: 'top',
+                thickness: 8, len: 0.5, outlinewidth: 0,
+                tickvals: [0, 0.5, 1], ticktext: ['All Russia', 'Even', 'All Ukraine'],
+                tickfont: {size: 10, color: '#666'}
+              }
+            },
+            {
+              type: 'choropleth', locationmode: 'ISO-3',
+              locations: ['RUS', 'UKR'], z: [0, 0], customdata: ['Russia', 'Ukraine'],
+              hovertemplate: '<b>%{customdata}</b><br>N/A<extra></extra>',
+              colorscale: [[0, '#9e978b'], [1, '#9e978b']], showscale: false,
+              marker: {line: line}
+            }
+          ], {
+            geo: {
+              projection: {type: 'natural earth'}, showframe: false,
+              showcoastlines: true, coastlinecolor: '#ddd',
+              showland: true, landcolor: '#f5f2ed',
+              showocean: true, oceancolor: '#E8F4F8',
+              countrycolor: '#ddd', countrywidth: 0.5, bgcolor: '#fffef5',
+              lataxis: {range: [-58, 85]}
+            },
+            font: {family: 'Inter, Arial, sans-serif', size: 10},
+            margin: {l: 0, r: 0, t: 0, b: 30},
+            paper_bgcolor: '#fffef5', plot_bgcolor: '#fffef5'
+          }, {responsive: true, displayModeBar: false});
+        })();
+      </script>
 
       <div class="project-impact">
         <div class="impact-label">Metric</div>
-        Alignment(C) = Σ Goldstein(C → Ukraine) − Σ Goldstein(C → Russia)
+        Deeds(C) = deeds(C → Ukraine) / [deeds(C → Ukraine) + deeds(C → Russia)]
       </div>
 
       <div class="tech-stack">
         <span class="tech">GDELT</span>
         <span class="tech">BigQuery</span>
         <span class="tech">PySpark</span>
-        <span class="tech">Goldstein Scale</span>
       </div>
-
-      <div class="figure figure-map">
-        <div id="alignment-map"></div>
-        <p class="figure-caption">Red: pro-Russia. Blue: pro-Ukraine. Grey: insufficient data. Western Europe's reversal signals how a historical event rewired global discourse.</p>
-      </div>
-      <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
-      <script>
-        var plotlyData = [{"type": "choropleth", "locations": ["ABW", "AFG", "AFR", "AGO", "AIA", "ALB", "AND", "ARE", "ARG", "ARM", "ASA", "ATG", "AUS", "AUT", "AZE", "BDI", "BEL", "BEN", "BFA", "BGD", "BGR", "BHR", "BHS", "BLR", "BLZ", "BMU", "BOL", "BRA", "BRB", "BRN", "BTN", "BWA", "CAF", "CAN", "CAS", "CHE", "CHL", "CHN", "CIV", "CMR", "COD", "COG", "COL", "CPV", "CRB", "CRI", "CUB", "CYM", "CYP", "CZE", "DEU", "DJI", "DMA", "DNK", "DOM", "DZA", "ECU", "EGY", "ERI", "ESP", "EST", "ETH", "EUR", "FIN", "FJI", "FRA", "GAB", "GBR", "GEO", "GHA", "GIN", "GMB", "GNB", "GNQ", "GRC", "GRD", "GTM", "GUY", "HKG", "HND", "HRV", "HTI", "HUN", "IDN", "IND", "IRL", "IRN", "IRQ", "ISL", "ISR", "ITA", "JAM", "JOR", "JPN", "KAZ", "KEN", "KGZ", "KHM", "KNA", "KOR", "KWT", "LAM", "LAO", "LBN", "LBR", "LBY", "LCA", "LIE", "LKA", "LSO", "LTU", "LUX", "LVA", "MAC", "MAR", "MCO", "MDA", "MDG", "MDV", "MEA", "MEX", "MHL", "MKD", "MLI", "MLT", "MMR", "MNG", "MOZ", "MRT", "MUS", "MWI", "MYS", "NAM", "NER", "NGA", "NIC", "NLD", "NMR", "NOR", "NPL", "NRU", "NZL", "OMN", "PAK", "PAN", "PER", "PGS", "PHL", "PNG", "POL", "PRK", "PRT", "PRY", "PSE", "QAT", "RUS", "RWA", "SAF", "SAS", "SAU", "SCN", "SDN", "SEA", "SEN", "SGP", "SLB", "SLE", "SLV", "SMR", "SOM", "SRB", "SSD", "SUR", "SVK", "SWE", "SWZ", "SYC", "SYR", "TCD", "TGO", "THA", "TJK", "TKM", "TTO", "TUN", "TUR", "TWN", "TZA", "UGA", "UKR", "URY", "USA", "UZB", "VAT", "VCT", "VEN", "VNM", "VUT", "WAF", "WSM", "WST", "YEM", "ZAF", "ZMB", "ZWE"], "z": [0, -1, -1, -1, 0, 1, 0, -1, -1, -1, 0, -1, -1, -1, -1, 0, 1, 0, 0, -1, 1, -1, 0, -1, -1, 0, -1, -1, 0, -1, 0, 0, 0, 1, -1, -1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 1, -1, -1, 0, 1, -1, -1, -1, -1, 0, 0, 1, -1, 1, -1, 1, -1, 0, 1, 1, -1, -1, 0, -1, 0, -1, 0, -1, 0, 0, -1, 1, 0, -1, -1, -1, 0, -1, -1, -1, -1, -1, 0, -1, -1, -1, 1, -1, -1, 0, -1, -1, 0, -1, -1, 0, -1, 0, 0, -1, 0, 1, 1, 1, 0, -1, 0, 0, -1, -1, -1, -1, 0, 1, -1, -1, -1, -1, -1, 0, 0, 0, -1, 0, 0, -1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, -1, -1, 0, 1, -1, -1, -1, -1, -1, 0, -1, 0, -1, -1, 0, -1, -1, 1, -1, 0, -1, 0, -1, 0, -1, 0, 0, 1, 1, 0, -1, -1, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 1, -1, -1, 0, -1, -1, 0, 0, 0, 1, 0, 0, -1, 1], "text": ["Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Neutral", "Neutral", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine"], "colorscale": [[0.0, "#F08080"], [0.5, "#A9A9A9"], [1.0, "#6495ED"]], "zmin": -1, "zmax": 1, "hovertemplate": "<b>%{location}</b><br>%{text}<extra></extra>", "showscale": false, "geo": "geo"}, {"type": "choropleth", "locations": ["ABW", "AFG", "AFR", "AGO", "ALB", "AND", "ARE", "ARG", "ARM", "ASA", "ATG", "AUS", "AUT", "AZE", "BDI", "BEL", "BEN", "BFA", "BGD", "BGR", "BHR", "BHS", "BLR", "BLZ", "BMU", "BOL", "BRA", "BRB", "BRN", "BTN", "BWA", "CAF", "CAN", "CAS", "CHE", "CHL", "CHN", "CIV", "CMR", "COD", "COG", "COK", "COL", "COM", "CPV", "CRB", "CRI", "CUB", "CYM", "CYP", "CZE", "DEU", "DJI", "DMA", "DNK", "DOM", "DZA", "EAF", "ECU", "EGY", "ERI", "ESP", "EST", "ETH", "EUR", "FIN", "FJI", "FRA", "FSM", "GAB", "GBR", "GEO", "GHA", "GIN", "GMB", "GNB", "GNQ", "GRC", "GRD", "GTM", "GUY", "HKG", "HND", "HRV", "HTI", "HUN", "IDN", "IND", "IRL", "IRN", "IRQ", "ISL", "ISR", "ITA", "JAM", "JOR", "JPN", "KAZ", "KEN", "KGZ", "KHM", "KIR", "KNA", "KOR", "KWT", "LAM", "LAO", "LBN", "LBR", "LBY", "LCA", "LIE", "LKA", "LSO", "LTU", "LUX", "LVA", "MAC", "MAR", "MCO", "MDA", "MDG", "MDV", "MEA", "MEX", "MHL", "MKD", "MLI", "MLT", "MMR", "MNG", "MOZ", "MRT", "MUS", "MWI", "MYS", "NAM", "NER", "NGA", "NIC", "NLD", "NMR", "NOR", "NPL", "NRU", "NZL", "OMN", "PAK", "PAN", "PER", "PGS", "PHL", "PLW", "PNG", "POL", "PRK", "PRT", "PRY", "PSE", "QAT", "ROM", "RUS", "RWA", "SAF", "SAS", "SAU", "SCN", "SDN", "SEA", "SEN", "SGP", "SLB", "SLE", "SLV", "SMR", "SOM", "SRB", "SSD", "STP", "SUR", "SVK", "SWE", "SWZ", "SYC", "SYR", "TCD", "TGO", "THA", "TJK", "TKM", "TMP", "TON", "TTO", "TUN", "TUR", "TUV", "TWN", "TZA", "UGA", "UKR", "URY", "USA", "UZB", "VAT", "VCT", "VEN", "VNM", "VUT", "WAF", "WSM", "WST", "YEM", "ZAF", "ZMB", "ZWE"], "z": [0, 0, -1, -1, 1, 0, -1, 1, -1, 0, 0, 1, 1, -1, -1, 1, 0, -1, -1, 1, -1, 1, -1, 0, 0, -1, 1, 1, -1, 0, 0, -1, 1, -1, 1, 1, -1, 0, -1, -1, -1, 0, 1, 0, 0, 0, 1, -1, 0, 1, 1, 1, 1, 0, 1, 0, -1, 0, -1, -1, -1, 1, 1, -1, 1, 1, 1, 1, 0, 0, 1, 0, 1, -1, 0, -1, -1, 1, 0, 1, 0, 0, 0, 1, 0, 1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 0, 1, -1, 0, -1, 1, 0, 1, -1, 1, 0, -1, 1, 1, -1, 0, 0, -1, 0, 1, 1, 1, 0, -1, 0, 1, 0, 1, -1, 1, 0, 1, -1, 1, -1, -1, -1, 0, 1, 0, -1, -1, -1, -1, -1, 1, 0, 1, -1, 0, 1, -1, -1, 1, -1, -1, 1, 0, 0, 1, -1, 1, 0, -1, 1, 0, 0, 0, 0, -1, 1, 0, -1, -1, -1, 1, 0, 0, 0, 0, -1, -1, 0, 0, 0, 1, 1, 0, -1, -1, -1, 0, -1, -1, -1, 0, 0, 0, -1, -1, 0, 1, -1, -1, 0, 0, 1, -1, 1, 0, -1, -1, 0, 0, 0, 1, 0, -1, 0, -1], "text": ["Neutral", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Ukraine", "Pro-Ukraine", "Pro-Russia", "Neutral", "Neutral", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Russia", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Ukraine", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Ukraine", "Neutral", "Neutral", "Neutral", "Neutral", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Pro-Ukraine", "Neutral", "Neutral", "Neutral", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Russia", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Pro-Ukraine", "Pro-Russia", "Pro-Ukraine", "Neutral", "Pro-Russia", "Pro-Russia", "Neutral", "Neutral", "Neutral", "Pro-Ukraine", "Neutral", "Pro-Russia", "Neutral", "Pro-Russia"], "colorscale": [[0.0, "#F08080"], [0.5, "#A9A9A9"], [1.0, "#6495ED"]], "zmin": -1, "zmax": 1, "hovertemplate": "<b>%{location}</b><br>%{text}<extra></extra>", "showscale": false, "geo": "geo2"}];
-        var plotlyLayout = {"geo": {"domain": {"x": [0.02, 0.48], "y": [0.0, 1.0]}, "projection": {"type": "natural earth"}, "showcoastlines": true, "coastlinecolor": "#ddd", "showland": true, "landcolor": "#f5f2ed", "showocean": true, "oceancolor": "#E8F4F8", "countrycolor": "#ddd", "countrywidth": 0.5, "showframe": false, "bgcolor": "#fffef5"}, "geo2": {"domain": {"x": [0.52, 0.98], "y": [0.0, 1.0]}, "projection": {"type": "natural earth"}, "showcoastlines": true, "coastlinecolor": "#ddd", "showland": true, "landcolor": "#f5f2ed", "showocean": true, "oceancolor": "#E8F4F8", "countrycolor": "#ddd", "countrywidth": 0.5, "showframe": false, "bgcolor": "#fffef5"}, "annotations": [{"font": {"size": 12}, "showarrow": false, "text": "Pre-War (2021)", "x": 0.25, "xanchor": "center", "xref": "paper", "y": 0.95, "yanchor": "top", "yref": "paper"}, {"font": {"size": 12}, "showarrow": false, "text": "Wartime (2022-2024)", "x": 0.75, "xanchor": "center", "xref": "paper", "y": 0.95, "yanchor": "top", "yref": "paper"}], "font": {"family": "Inter, Arial, sans-serif", "size": 10}, "margin": {"l": 0, "r": 0, "t": 15, "b": 0}, "height": 320, "showlegend": false, "paper_bgcolor": "#fffef5", "plot_bgcolor": "#fffef5"};
-        Plotly.newPlot('alignment-map', plotlyData, plotlyLayout, {responsive: true, displayModeBar: false});
-      </script>
     </article>
 
 
     <!-- Leading with AI -->
     <article class="project">
       <div class="project-category">Teamwork with AI</div>
-      <h2 class="project-headline">Directing with clarity: how teams move 10x faster without breaking systems</h2>
+      <h2 class="project-headline">Unstoppable Pace, Immovable Seams</h2>
+      <p class="project-dek">AI let everyone ship in hours. What kept the pieces fitting was the one thing that didn't move.</p>
 
       <div class="project-body">
-        <p><strong>The problem:</strong> AI gives teams tremendous speed. But speed without clarity breaks systems; when every engineer can ship in hours instead of days, components collide if boundaries aren't crystal clear.</p>
+        <p><strong>The problem:</strong> In my last few projects, each of us, human or agent, could build a component in hours. Writing code stopped being the hard part. Keeping the pieces fitting together while all of them changed at once became the hard part.</p>
 
-        <p><strong>Three patterns that work:</strong></p>
+        <p><strong>What worked for me, in three parts:</strong></p>
 
-        <p><span class="keyword">Requirements</span>: document system constraints upfront (throughput, latency, state ownership, recovery targets). Pin it in your chat; you'll refer to it constantly when validating frameworks and debugging.</p>
+        <p><strong>Boundaries:</strong> Before any code, I documented the requirements and the architecture, down to what each component owns and must guarantee (throughput, latency, ordering, recovery). No new framework got in until a coding agent had trialed it against them.</p>
 
-        <p><span class="keyword">Contracts</span>: define API specs and error cases before building; everyone develops against it. A message queue looked perfect until validation flagged a concurrency issue that broke the contract.</p>
+        <p><strong>Handshakes:</strong> for every connection, a short contract: who sends, who receives, what can fail, and one concrete example. The example matters most. It gives a teammate, or a coding agent, enough context to build their side alone.</p>
 
-        <div class="figure">
-          <table class="contract-table">
-            <thead>
+        <p><strong>Testing against both:</strong> we weren't shy about stubbing the other side, because every stub came from the handshake. A monorepo kept each handshake and both of its sides together, so changing it broke both sides' tests in the same pull request.</p>
+
+        <p><strong>Where it paid off:</strong> In an IoT gateway, four of us built nine services from edge to cloud. Devices reboot, so one handshake promised that registering twice is safe. The registry, built in an afternoon, rejected repeats with 409 Conflict, and a rebooted device would have read that as failure. A test against the handshake caught it before any device went dark. Now a repeat returns the existing record.</p>
+
+        <p>Here is that handshake, in the exact format we used:</p>
+      </div>
+
+      <div class="figure">
+        <table class="contract-table">
+          <thead>
             <tr>
-              <th scope="col">Aspect</th>
-              <th scope="col">Description</th>
+              <th scope="col">Handshake</th>
+              <th scope="col">Device registration (<code>POST /api/v1/devices</code>)</th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             <tr>
-              <td><strong>Operation</strong></td>
-              <td>Fetch user profile</td>
-            </tr>
-            <tr>
-              <td><strong>Invoker</strong></td>
-              <td>Web Service</td>
-            </tr>
-            <tr>
-              <td><strong>Responder</strong></td>
-              <td>User Service</td>
-            </tr>
-            <tr>
-              <td><strong>Request</strong></td>
-              <td><span class="hover-json" data-json="GET /api/users/{id}
-timeout: 5s
-headers: {
-  &quot;Accept&quot;: &quot;application/json&quot;
-}">request.json</span></td>
+              <th scope="row">From</th>
+              <td>Edge device</td>
             </tr>
             <tr>
-              <td><strong>Response</strong></td>
-              <td><span class="hover-json" data-json="200 OK
+              <th scope="row">To</th>
+              <td>Device registry</td>
+            </tr>
+            <tr class="contract-key">
+              <th scope="row">Promise</th>
+              <td>Registering twice is safe (idempotent by <code>device_id</code>)</td>
+            </tr>
+            <tr>
+              <th scope="row">Request</th>
+              <td><span class="json-sample" tabindex="0" data-json="POST /api/v1/devices
 {
-  &quot;id&quot;: &quot;user-123&quot;,
-  &quot;name&quot;: &quot;Alice&quot;,
-  &quot;status&quot;: &quot;active&quot;
-}">response.json</span> (200 OK)</td>
+  &quot;device_id&quot;: &quot;device_0042&quot;,
+  &quot;device_type&quot;: &quot;env_sensor&quot;,
+  &quot;location&quot;: &quot;Server Room A&quot;,
+  &quot;sensors&quot;: [{
+    &quot;sensor_type&quot;: &quot;temperature&quot;,
+    &quot;unit&quot;: &quot;celsius&quot;
+  }]
+}">register_request.json</span></td>
             </tr>
             <tr>
-              <td><strong>Errors</strong></td>
-              <td>404 (not found), 500 (service error)</td>
+              <th scope="row">Response</th>
+              <td><span class="json-sample" tabindex="0" data-json="200 OK on a repeat
+(201 Created the first time)
+{
+  &quot;device_id&quot;: &quot;device_0042&quot;,
+  &quot;status&quot;: &quot;active&quot;,
+  &quot;registered_at&quot;:
+    &quot;2026-02-24T21:30:12Z&quot;,
+  &quot;last_seen&quot;:
+    &quot;2026-02-24T21:42:05Z&quot;
+}">register_response.json</span></td>
             </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p><span class="keyword">Validate</span>: ask the AI to map the relevant subset from requirements and contracts, then validate the framework against both. When the system went live, it fitted on the first try; not because the AI was perfect, but because teammates trusted the contract and I owned the failures.</p>
+            <tr class="contract-key">
+              <th scope="row">Test</th>
+              <td>The same registration sent twice: both succeed, one record</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="project-impact">
-        <div class="impact-label">Insight</div>
-        Speed without clarity breaks trust. AI gives you the speed; you have to give the clarity. Requirements. Validation. Contracts. That's how teams move 10x faster without falling apart.
+        <div class="impact-label">Takeaway</div>
+        Fast teams don't collide in the code. They collide at the seams, so the seams land in the repo before the code does.
       </div>
 
       <div class="tech-stack">
-        <span class="tech">Team Leadership</span>
-        <span class="tech">Framework Validation</span>
-        <span class="tech">Contract-Driven Design</span>
+        <span class="tech">API Contracts</span>
+        <span class="tech">Contract Testing</span>
+        <span class="tech">Monorepo</span>
         <span class="tech">AI-Assisted Development</span>
       </div>
     </article>
@@ -706,10 +854,10 @@ headers: {
 
     <!-- Philosophy -->
     <section class="philosophy">
-      <h2>First Principles</h2>
-      <p><strong>Start from the problem, not the symptom.</strong> What makes this a problem? Is it a scaling issue, a generalization failure, or a coordination bottleneck? The diagnosis shapes the solution.</p>
-      <p><strong>Understand the constraint.</strong> Is this UI work (users first), ML work (metric vs. compute), or systems work (latency vs. throughput)? The audience and the tradeoff space matter.</p>
-      <p><strong>Document as you build.</strong> Contracts, requirements, design choices, not as an afterthought, but as the backbone of the work.</p>
+      <h2>Notes to Self</h2>
+      <p><strong>Know why it works, not just why it broke.</strong> A success you can't explain is luck, and luck doesn't repeat.</p>
+      <p><strong>Make the trade, then write it down.</strong> Name the price before paying it. When a decision gets reversed, keep it, linked to the one that replaced it, so nobody walks back into the old mistake.</p>
+      <p><strong>Build the 20% that matters, then step back.</strong> Pick the next 20% and repeat. Every round ends somewhere worth stopping, so a deadline decides how much ships, never whether it does.</p>
     </section>
 
   </main>
